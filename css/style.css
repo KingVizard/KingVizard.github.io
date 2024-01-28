@@ -20,6 +20,7 @@ body {
         width: 100vW;
         display: flex;
         background-color: #f00;
+        padding: 10px;
 
         .container-logo {
             width: 120px;
@@ -33,7 +34,7 @@ body {
         }
 
         .container-menu {
-            width: calc(100%-120px);
+            width: calc(100% - 120px);
             height: 100%;
             display: flex;
             justify-content: space-around;
