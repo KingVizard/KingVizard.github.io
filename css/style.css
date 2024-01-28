@@ -9,7 +9,7 @@
 body {
     height: 100vh;
     width: 100vw;
-    background-color: green;
+    background-color: rgb(255, 250, 250);
 /* 
     h1 {
         text-align: center;
@@ -19,6 +19,7 @@ body {
         height: 70px;
         width: 100vW;
         display: flex;
+        background-color: #f00;
     }
 
     .nav-bar .container-logo {
