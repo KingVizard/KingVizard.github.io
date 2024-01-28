@@ -33,6 +33,8 @@ body {
         }
 
         .container-menu {
+            width: calc(100%-120px);
+            height: 100%;
             display: flex;
             justify-content: space-around;
             align-items: center;
