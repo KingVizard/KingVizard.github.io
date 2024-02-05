@@ -10,11 +10,13 @@ body {
     height: 100vh;
     width: 100vw;
     background-color: rgb(255, 250, 250);
+    overflow-y: scroll;
+    overflow-x: hidden;
 /* 
     h1 {
         text-align: center;
     } */
-
+/* 
     .nav-bar {
         height: 70px;
         width: 100vW;
@@ -48,6 +50,31 @@ body {
             }
         }
     
+    } */
+
+    .carousel-inner .carousel-item {
+        height: 100vh;
+        position: relative;
+    }
+
+    .carousel-inner .carousel-item img {
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(.8);
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(55, 255, 0, 0.504);
+        z-index: 1;
+
+        h1 {
+            font-size: 2.5rem;
+        }
     }
 
 
