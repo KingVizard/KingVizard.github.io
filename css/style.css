@@ -39,6 +39,7 @@ body {
             width: calc(100% - 120px);
             height: 100%;
             display: flex;
+            
             justify-content: space-around;
             align-items: center;
 
@@ -50,7 +51,7 @@ body {
             }
         }
     
-    } */
+     } */ 
 
     .carousel-inner .carousel-item {
         height: 100vh;
@@ -78,5 +79,16 @@ body {
     }
 
 
+    .card img {
+        width: 6rem;
+        /* margin: auto; */
+    }
+
+    footer .col img{
+        width: 2rem;
+        height: 2rem;
+        object-fit: contain;
+    }
 
 }
+
