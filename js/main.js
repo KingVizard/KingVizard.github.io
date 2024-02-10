@@ -1,20 +1,14 @@
-function registrar() {
-    console.log('diste un click"');
-}
-
-
+// import { } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+// // import { } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"
+// import { } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-functions.js"
 
 // import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-// const auth = getAuth();
-// createUserWithEmailAndPassword(auth, email, password)
-//   .then((userCredential) => {
-//     // Signed in 
-//     const user = userCredential.user;
-//     // ...
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     // ..
-//   });
+// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+
+
+
+
+
+
