@@ -1,5 +1,5 @@
 function registrar() {
-    console.log("diste un click");
+    console.log('diste un click"');
 }
 
 
