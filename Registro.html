@@ -18,11 +18,11 @@
   </header>
   <main class="my-3">
     <form id="MainForm">
-      <H2>LOGIN</H2>
+      <h2>REGISTRO</h2>
       <input id="emailInp" type="text" placeholder="usuario">
       <input id="passwordInp" type="password" placeholder="contrasena">
-      <button type="submit">INICIAR</button> 
-      <a href="Registro.html">Registro</a>
+      <button type="submit">Registrar</button> 
+      <a href="login.html">Login</a>
 
     </form>
   </main>
@@ -40,7 +40,7 @@
     import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
 
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyAXoDvbYkbX1Y-VuZmEjBTXv1BywK40Lmo",
@@ -63,16 +63,16 @@
       let password = document.getElementById('passwordInp');
       let MainForma = document.getElementById('MainForm');
 
-      let SignIn = evt => {
+      let RegisterUser = evt => {
         evt.preventDefault();
 
         console.log(email + "<-email");
 
         
-        signInWithEmailAndPassword(auth, email.value, password.value)
+        createUserWithEmailAndPassword(auth, email.value, password.value)
           .then((userCredential) => {
             const user = userCredential.user;
-            alert("Usuario existe");
+            alert("Usuario registrado");
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -87,7 +87,7 @@
           });
       }
 
-      MainForma.addEventListener('submit', SignIn);
+      MainForma.addEventListener('submit', RegisterUser);
 
 
 
