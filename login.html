@@ -38,7 +38,7 @@
     import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
 
-    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyAXoDvbYkbX1Y-VuZmEjBTXv1BywK40Lmo",
@@ -67,10 +67,10 @@
         console.log(email + "<-email");
 
         
-        createUserWithEmailAndPassword(auth, email.value, password.value)
+        signInWithEmailAndPassword(auth, email.value, password.value)
           .then((userCredential) => {
             const user = userCredential.user;
-            console.log("Usuario registrado");
+            alert("Usuario existe");
           })
           .catch((error) => {
             const errorCode = error.code;

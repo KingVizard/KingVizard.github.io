@@ -71,7 +71,7 @@
         createUserWithEmailAndPassword(auth, email.value, password.value)
           .then((userCredential) => {
             const user = userCredential.user;
-            console.log("Usuario registrado");
+            alert("Usuario registrado");
           })
           .catch((error) => {
             const errorCode = error.code;
