@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <title>Registro de usuarios</title>
 </head>
 
 <body>
@@ -18,11 +18,15 @@
   </header>
   <main class="my-3">
     <form id="MainForm">
+      <H2>LOGIN</H2>
       <input id="emailInp" type="text" placeholder="usuario">
       <input id="passwordInp" type="password" placeholder="contrasena">
       <button type="submit">Registro</button> 
       <br>
-      <a href="registro.html">REGISTRO</a>
+      <!-- <a href="Registro.html">REGISTRO</a> -->
+      <button type="submit">INICIAR</button> 
+      <a href="Registro.html">Registro</a>
+
     </form>
   </main>
   <footer class="bg-dark text-white">
@@ -62,7 +66,7 @@
       let password = document.getElementById('passwordInp');
       let MainForma = document.getElementById('MainForm');
 
-      let RegisterUser = evt => {
+      let SignIn = evt => {
         evt.preventDefault();
 
         console.log(email + "<-email");
@@ -78,44 +82,19 @@
             const errorMessage = error.message;
             
             // console.log(userCredential);
-            console.log(email + "<-email");
+            console.log(email.value + "<-email");
+            console.log(password.value + "<-pass");
+            
             
             console.log(errorCode + ' error');
           });
       }
 
-      MainForma.addEventListener('submit', RegisterUser);
+      MainForma.addEventListener('submit', SignIn);
 
 
 
   </script>
-
-
-
-  <!-- <script>
-          function registrosa(){
-      
-      console.log('Presionaste el boton');
-
-      let email = document.getElementById('user').value;
-      let password = document.getElementById('password').value;
-
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          // ...
-          console.log("Usuario registrado");
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // ..
-          console.log(errorCode);
-        });
-
-    }
-    </script> -->
 </body>
 
 </html>
