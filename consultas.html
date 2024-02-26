@@ -17,8 +17,11 @@
 <body>
     
     <main class="my-3 p-3 gap-3 d-flex flex-column container-main">
-      <a href="index.html"><i class="bi bi-arrow-left-circle"></i></a>
-
+        <div class="buttos">
+            
+            <button onclick="rotateScreen()">Rotar pantalla</button>
+            <a href="index.html"><i class="bi bi-arrow-left-circle"></i></a>
+        </div>
 
     <section class="container tb-container table-responsive">
       <table id="tablaProductos" class="table table-bordered table-striped table-responsive">
@@ -239,6 +242,21 @@
       })
     });
 
+
+
+    function rotateScreen() {
+  // Utiliza la función de la API Screen Orientation para obtener la orientación actual de la pantalla
+  var currentOrientation = window.screen.orientation;
+
+  // Comprueba la orientación actual y rota la pantalla en consecuencia
+  if (currentOrientation === 'portrait-primary') {
+    // Rota a la orientación paisaje
+    window.screen.orientation.lock('landscape-primary');
+  } else {
+    // Rota a la orientación retrato
+    window.screen.orientation.lock('portrait-primary');
+  }
+}
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

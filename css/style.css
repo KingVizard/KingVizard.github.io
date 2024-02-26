@@ -46,6 +46,7 @@ body {
     
     main {
         border: 1px solid red;
+        height: 90vh; /*test*/
         /* background: #000; */
         
     }
