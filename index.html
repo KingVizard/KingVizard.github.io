@@ -326,7 +326,7 @@
 
     $('#tablaProductos').on('click', '.btnBorrar', function () {
       Swal.fire({
-        title: '¿Está seguro de eliminar el producto?',
+        title: '¿Está seguro de eliminar el registro?',
         text: '¡Está operacion no se puede revertir!',
         icon: 'warning',
         showCancelButton: true,
@@ -337,7 +337,7 @@
         if (result.value) {
           let id = $(this).closest('tr').attr('id');
           db.ref(`produccion/${id}`).remove()
-          Swal.fire('¡Eliminado!', 'El producto ha sido eliminado.', 'success')
+          Swal.fire('¡Eliminado!', 'El registri ha sido eliminado.', 'success')
         }
       })
     });
