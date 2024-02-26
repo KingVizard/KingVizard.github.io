@@ -24,12 +24,14 @@
         </nav>
   </header> -->
   <main class="my-3 p-3 gap-3 d-flex flex-column container-main">
+    <a href="Opciones.html"><i class="bi bi-arrow-left-circle"></i></a>
+
 
     <section class="container text-center ViewRegister">
       <h1 class="my-3 text-center">Produccion</h1>
       <!-- 1° fila -->
-      <button id="btnNuevo" class="btn btn-primary" data-toggle="tooltip" title="Nuevo Producto"><i
-          class="bi bi-plus-circle-fill"></i></button>
+      <!-- <button id="btnNuevo" class="btn btn-primary" data-toggle="tooltip" title="Nuevo Producto"><i
+          class="bi bi-plus-circle-fill"></i></button> -->
       <form>
 
         <div class="row">
@@ -99,26 +101,25 @@
         </div>
 
         <div class="row">
-          <div class="col-12 d-flex justify-content-center align-items-center">
+          <div class="col-6 d-flex justify-content-center align-items-center">
             <button type="submit">Guardar</button>
           </div>
-          <!-- <div class="col-6 d-flex justify-content-center align-items-center">
-            <button>Mostrar</button>
-          </div> -->
+          <div class="col-6 d-flex justify-content-center align-items-center">
+            <a href="consultas.html">Mostrar</a>
+          </div>
         </div>
 
       </form>
 
     </section>
 
-    <section class="container tb-container table-responsive">
+    <!-- <section class="container tb-container table-responsive d-none">
       <table id="tablaProductos" class="table table-bordered table-striped table-responsive">
         <thead>
           <tr class="bg-dark text-light">
             <th scope="col">SECADOR</th>
             <th scope="col">TURNO</th>
             <th scope="col">HORA</th>
-            <!-- <th scope="col">FECHA</th> -->
             <th scope="col">FORMATO</th>
             <th scope="col">COLOR</th>
             <th scope="col">CONTADORSQFT</th>
@@ -133,23 +134,10 @@
 
         </tbody>
       </table>
-    </section>
+    </section> -->
+
   </main>
-  <footer class="bg-dark text-white">
-    <!-- <div class="row flex-column p-3 text-center gap-3">
-      <div class="col">
-        <h3>TITULO WEB</h3>
-      </div>
-      <div class="col d-flex justify-content-evenly">
-        <img src="img/aqJhzLZ.gif" alt="">
-        <img src="img/giphy.webp" alt="">
-        <img src="img/test.jpg" alt="">
-      </div>
-      <div class="col">
-        <small>TITULOWEB 2023&copy; Todos los derechos reservados</small>
-      </div>
-    </div> -->
-  </footer>
+
 
   <!-- FIREBASE -->
   <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase.js"></script>
@@ -250,97 +238,94 @@
     };
 
     //CHILD_ADDED
-    coleccionProduccion.on('child_added', (data) => {
-      let tr = document.createElement('tr')
-      tr.id = data.key
-      tr.innerHTML = mostrarProduccion(data.val())
-      document.getElementById('bodyProductos').appendChild(tr)
-    });
+    // coleccionProduccion.on('child_added', (data) => {
+    //   let tr = document.createElement('tr')
+    //   tr.id = data.key
+    //   tr.innerHTML = mostrarProduccion(data.val())
+    //   document.getElementById('bodyProductos').appendChild(tr)
+    // });
 
 
     //CHILD_CHANGED
-    coleccionProduccion.on('child_changed', data => {
-      let nodoEditado = document.getElementById(data.key)
-      nodoEditado.innerHTML = mostrarProduccion(data.val())
-    });
+    // coleccionProduccion.on('child_changed', data => {
+    //   let nodoEditado = document.getElementById(data.key)
+    //   nodoEditado.innerHTML = mostrarProduccion(data.val())
+    // });
 
     //CHILD_REMOVED
-    coleccionProduccion.on('child_removed', data => {
-      let nodoEliminado = document.getElementById(data.key)
-      document.getElementById('bodyProductos').removeChild(nodoEliminado)
-    });
+    // coleccionProduccion.on('child_removed', data => {
+    //   let nodoEliminado = document.getElementById(data.key)
+    //   document.getElementById('bodyProductos').removeChild(nodoEliminado)
+    // });
 
 
     //   botones
-    $('#btnNuevo').click(function () {
-    let inputHora = document.getElementById('hora');
-      let fechaHora = new Date();
-      let hora = fechaHora.getHours();
-      let minutos = fechaHora.getMinutes();
-      let horaActual = (hora < 10 ? "0" + hora : hora) + ":" + (minutos < 10 ? "0" + minutos : minutos);
+    // $('#btnNuevo').click(function () {
+    // let inputHora = document.getElementById('hora');
+    //   let fechaHora = new Date();
+    //   let hora = fechaHora.getHours();
+    //   let minutos = fechaHora.getMinutes();
+    //   let horaActual = (hora < 10 ? "0" + hora : hora) + ":" + (minutos < 10 ? "0" + minutos : minutos);
       
-      $('#listSecadores').val('');
-      $('#listTurnos').val('');
-      $('#color').val('');
-      $('#formato').val('');
-      $('#contadorSQFT').val('');
-      $('#sqftMeta').val('');
-      $('#Cumplimiento').val('');
-      $('#comentarios').val('');
-      $('form').trigger('reset');
-      inputHora.value = horaActual;
-    });
+    //   $('#listSecadores').val('');
+    //   $('#listTurnos').val('');
+    //   $('#color').val('');
+    //   $('#formato').val('');
+    //   $('#contadorSQFT').val('');
+    //   $('#sqftMeta').val('');
+    //   $('#Cumplimiento').val('');
+    //   $('#comentarios').val('');
+    //   $('form').trigger('reset');
+    //   inputHora.value = horaActual;
+    // });
 
-    $('#tablaProductos').on('click', '.btnEditar', function () {
-      let id = $(this).closest('tr').attr('id');
+    // $('#tablaProductos').on('click', '.btnEditar', function () {
+    //   let id = $(this).closest('tr').attr('id');
 
-      let codigo = $(this).closest('tr').find('td:eq(0)').text();
-      let descripcion = $(this).closest('tr').find('td:eq(1)').text();
-      let cantidad = $(this).closest('tr').find('td:eq(2)').text();
+    //   let codigo = $(this).closest('tr').find('td:eq(0)').text();
+    //   let descripcion = $(this).closest('tr').find('td:eq(1)').text();
+    //   let cantidad = $(this).closest('tr').find('td:eq(2)').text();
 
-      // -
-      let secador = $(this).closest('tr').find('td:eq(0)').text();
-      let turnos =$(this).closest('tr').find('td:eq(1)').text();;
-      let hora = $(this).closest('tr').find('td:eq(2)').text();
-      let color = $(this).closest('tr').find('td:eq(3)').text();
-      let formato = $(this).closest('tr').find('td:eq(4)').text();
-      let contadorSQFT = $(this).closest('tr').find('td:eq(5)').text();
-      let sqftMeta = $(this).closest('tr').find('td:eq(6)').text();
-      let Cumplimiento = $(this).closest('tr').find('td:eq(7)').text();
-      let comentarios = $(this).closest('tr').find('td:eq(8)').text();
-      // -
+    //   let secador = $(this).closest('tr').find('td:eq(0)').text();
+    //   let turnos =$(this).closest('tr').find('td:eq(1)').text();;
+    //   let hora = $(this).closest('tr').find('td:eq(2)').text();
+    //   let color = $(this).closest('tr').find('td:eq(3)').text();
+    //   let formato = $(this).closest('tr').find('td:eq(4)').text();
+    //   let contadorSQFT = $(this).closest('tr').find('td:eq(5)').text();
+    //   let sqftMeta = $(this).closest('tr').find('td:eq(6)').text();
+    //   let Cumplimiento = $(this).closest('tr').find('td:eq(7)').text();
+    //   let comentarios = $(this).closest('tr').find('td:eq(8)').text();
 
-      $('#id').val(id);
-      $('#listSecadores').val(secador);
-      $('#listTurnos').val(turnos);
-      $('#hora').val(hora);
-      $('#color').val(color);
-      $('#formato').val(formato);
-      $('#contadorSQFT').val(contadorSQFT);
-      $('#sqftMeta').val(sqftMeta);
-      $('#Cumplimiento').val(Cumplimiento);
-      $('#comentarios').val(comentarios);
+    //   $('#id').val(id);
+    //   $('#listSecadores').val(secador);
+    //   $('#listTurnos').val(turnos);
+    //   $('#hora').val(hora);
+    //   $('#color').val(color);
+    //   $('#formato').val(formato);
+    //   $('#contadorSQFT').val(contadorSQFT);
+    //   $('#sqftMeta').val(sqftMeta);
+    //   $('#Cumplimiento').val(Cumplimiento);
+    //   $('#comentarios').val(comentarios);
 
-      // $('#modalAltaEdicion').modal('show');
-    });
+    // });
 
-    $('#tablaProductos').on('click', '.btnBorrar', function () {
-      Swal.fire({
-        title: '¿Está seguro de eliminar el registro?',
-        text: '¡Está operacion no se puede revertir!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonColor: 'Borrar'
-      }).then((result) => {
-        if (result.value) {
-          let id = $(this).closest('tr').attr('id');
-          db.ref(`produccion/${id}`).remove()
-          Swal.fire('¡Eliminado!', 'El registri ha sido eliminado.', 'success')
-        }
-      })
-    });
+    // $('#tablaProductos').on('click', '.btnBorrar', function () {
+    //   Swal.fire({
+    //     title: '¿Está seguro de eliminar el registro?',
+    //     text: '¡Está operacion no se puede revertir!',
+    //     icon: 'warning',
+    //     showCancelButton: true,
+    //     confirmButtonColor: '#d33',
+    //     cancelButtonColor: '#3085d6',
+    //     confirmButtonColor: 'Borrar'
+    //   }).then((result) => {
+    //     if (result.value) {
+    //       let id = $(this).closest('tr').attr('id');
+    //       db.ref(`produccion/${id}`).remove()
+    //       Swal.fire('¡Eliminado!', 'El registri ha sido eliminado.', 'success')
+    //     }
+    //   })
+    // });
 
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
