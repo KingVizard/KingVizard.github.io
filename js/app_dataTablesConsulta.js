@@ -68,23 +68,26 @@ $(document).ready(function() {
   $('form').submit(function(e) {
     e.preventDefault();
     let id = $.trim($('#id').val());
-    let secador = $.trim($('#secador').val());
-    let turnos = $.trim($('#turnos').val());
+    let secador = $.trim($('#listSecadores').val());
+    let turnos = $.trim($('#listTurnos').val());
     let hora = $.trim($('#hora').val());
-    let fecha = $.trim($('#hora').val());
-    let color = $.trim($('#hora').val());
-    let formato = $.trim($('#hora').val());
-    let contadorSQFT = $.trim($('#hora').val());
-    let sqftMeta = $.trim($('#hora').val());
-    let Cumplimiento = $.trim($('#hora').val());
-    let comentarios = $.trim($('#hora').val());
+    let fecha = $.trim($('#fecha').val());
+    let color = $.trim($('#color').val());
+    let formato = $.trim($('#formato').val());
+    let contadorSQFT = $.trim($('#contadorSQFT').val());
+    let sqftMeta = $.trim($('#sqftMeta').val());
+    // let Cumplimiento = $.trim($('#Cumplimiento').val());
+    let Cumplimiento = ((contadorSQFT / sqftMeta) * 100).toFixed(2) + '%';
+    // let Cumplimiento = (contadorSQFT / sqftMeta) * 100 + '%';
+
+    let comentarios = $.trim($('#comentarios').val());
 
     let idFirebase = id;
     if (idFirebase == '') {
       idFirebase = coleccionProduccion.push().key;
     };
 
-    data = { secador: secador, turnos: turnos, hora: hora, fecha : fecha, color : color, formato : formato, contadorSQFT : contadorSQFT, sqftMeta : sqftMeta, Cumplimiento : Cumplimiento, comentarios : comentarios };
+    data = { secador: secador, turnos: turnos, hora : hora, fecha : fecha, color : color, formato : formato, contadorSQFT : contadorSQFT, sqftMeta : sqftMeta, Cumplimiento : Cumplimiento, comentarios : comentarios };
 
     actualizacionData = {};
 
@@ -106,20 +109,37 @@ $(document).ready(function() {
   //   $('#modalAltaEdicion').modal('show');
   // });
 
-  // $('#tablaProductos').on('click', '.btnEditar', function() {
-  //   filaEditada = table.row($(this).parents('tr'));
-  //   let fila = $('#tablaProductos').dataTable().fnGetData($(this).closest('tr'));
-  //   let id = fila[0];
-  //   let secador = $(this).closest('tr').find('td:eq(0)').text();
-  //   let turnos = $(this).closest('tr').find('td:eq(1)').text();
-  //   let hora = parseInt($(this).closest('tr').find('td:eq(2)').text());
+  $('#tablaProductos').on('click', '.btnEditar', function() {
+    filaEditada = table.row($(this).parents('tr'));
+    let fila = $('#tablaProductos').dataTable().fnGetData($(this).closest('tr'));
+    let id = fila[0];
+    let secador = $(this).closest('tr').find('td:eq(0)').text();
+    let turnos = $(this).closest('tr').find('td:eq(1)').text();
+    let hora = $(this).closest('tr').find('td:eq(2)').text();
+    // 
+    let fecha = $(this).closest('tr').find('td:eq(3)').text();
+    let color = $(this).closest('tr').find('td:eq(5)').text();
+    let contadorSQFT = $(this).closest('tr').find('td:eq(6)').text();
+    let sqftMeta = $(this).closest('tr').find('td:eq(7)').text();
+    // let Cumplimiento = $(this).closest('tr').find('td:eq(8)').text();
+    let formato = $(this).closest('tr').find('td:eq(4)').text();
+    let comentarios = $(this).closest('tr').find('td:eq(9)').text();
 
-  //   $('#id').val(id);
-  //   $('#secador').val(secador);
-  //   $('#turnos').val(turnos);
-  //   $('#hora').val(hora);
-  //   $('#modalAltaEdicion').modal('show');
-  // });
+    $('#id').val(id);
+    $('#listSecadores').val(secador);
+    $('#listTurnos').val(turnos);
+    $('#hora').val(hora);
+    // 
+    $('#fecha').val(fecha);
+    $('#color').val(color);
+    $('#contadorSQFT').val(contadorSQFT);
+    $('#sqftMeta').val(sqftMeta);
+    // $('#Cumplimiento').val(Cumplimiento);
+    $('#formato').val(formato);
+    $('#comentarios').val(comentarios);
+    // 
+    $('#modalAltaEdicion').modal('show');
+  });
 
   $('#tablaProductos').on('click', '.btnBorrar', function() {
     filaEliminada = $(this);
