@@ -11,95 +11,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 
-  <!-- <style>
-
-    * {
-      border: 0;
-      padding: 0;
-      box-sizing: border-box;
-      outline: 0;
-    }
-
-    body {
-      height: 100vh;
-      width: 100vw;
-      display: flex;
-      flex-direction: column;
-      row-gap: 20px;
-      
-
-      background: #e1e1e1;
-    }
-    
-    .row-head {
-      height: 3.5rem;
-      width: 100%;
-      background: #0000004d;
-
-      a {
-        font-size: 1.7rem;
-        color: #fff;
-
-        padding: 0;
-      }
-
-    .container {
-      height: 80%;
-      width: 100%;
-      border-radius: 10px;
-      background: #ff0;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      flex-shrink: 1;
-
-
-        h2 {
-          margin: 0;
-          font-weight: bold;
-        }
-      }
-
-      .row-body {
-
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        flex-shrink: 1;
-        
-        
-        .row {
-          height: 4.5rem;
-          width: 100%;
-          align-items: center;
-          background: green;
-
-          .col-6 {
-            display: flex;
-            flex-direction: column;
-          }
-
-          span {
-            font-weight: bold;
-          }
-          
-          #comentarios {
-            resize: none;
-            width: 100%;
-          }
-        }
-
-        .row-individual {
-          height: 2.5rem;
-
-        }
-        
-      }
-    }
-  </style> -->
 
   <style>
     * {
@@ -119,13 +30,12 @@
       .container-arrow {
 
         height: 3.4rem;
-        background:#b21942;
+        background: #b21942;
 
-         a {
-          /* display: none; */
+        a {
           color: #fff;
           font-size: 1.7rem;
-  
+
         }
       }
 
@@ -135,11 +45,10 @@
         align-items: center;
         height: 100%;
         width: 100%;
-        
+
         .container {
           height: 90%;
           width: 100%;
-          /* background: #00f; */
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -153,14 +62,12 @@
             height: 100%;
             width: 100%;
             display: flex;
-            /* flex-shrink: 1; */
-            /* background: green; */
             justify-content: center;
             align-items: center;
 
-            .row .col span, .col-6 span {
+            .row .col span,
+            .col-6 span {
               color: #fff;
-              /* font-weight: ; */
             }
 
 
@@ -168,46 +75,66 @@
               display: flex;
               align-items: center;
               border-radius: 10px;
-              height: 2.7rem;
+              height: 3.7rem;
               width: 100%;
               background: yellowgreen;
               background: #ec4767;
+
+              .col-6 Select,
+              .col input {
+                padding: 0 5px;
+              }
+
+              .col-6 Select:focus,
+              .col input:focus {
+                outline: none;
+              }
             }
 
             .row-2 {
-              /* display: flex; */
-              /* align-items: center; */
-              /* justify-content: center; */
               border-radius: 10px;
-              height: 4rem;
+              height: 5rem;
               width: 100%;
               background: rebeccapurple;
               background: #ec4767;
-              /* flex-shrink: 1; */
-              /* row-gap: 3px; */
 
               .col-6 {
                 display: flex;
                 flex-direction: column;
                 row-gap: 3px;
+                justify-content: center;
+
+                input {
+                  padding: 0 5px;
+
+                }
+
+                input:focus {
+                  outline: none;
+                }
               }
             }
 
             .row-3 {
               border-radius: 10px;
-              height: 10rem;
+              height: 10.5rem;
               width: 100%;
               background: slateblue;
               background: #ec4767;
               padding: 10px;
-              
-              
+
+
               #comentarios {
                 resize: none;
                 width: 100%;
                 height: 100%;
+                padding: 0 5px;
               }
-              
+
+              #comentarios:focus {
+                outline: none;
+              }
+
               .col {
                 row-gap: 3px;
 
@@ -223,11 +150,12 @@
                 border-radius: 10px;
                 color: #fff;
                 border: none;
+                font-weight: bold;
               }
-              
+
               a {
                 text-align: center;
-                line-height: 2;
+                line-height: 1;
                 color: #fff;
                 text-decoration: none;
                 background: green;
@@ -235,18 +163,21 @@
                 height: 3rem;
                 width: 8rem;
                 border-radius: 10px;
-
+                font-weight: bold;
+                display: flex;
+                justify-content: center;
+                align-items: center;
               }
+
             }
-
-
           }
+
+
         }
       }
     }
-
-
   </style>
+
 </head>
 
 <body>
@@ -264,45 +195,44 @@
       </div>
       <!-- <div class="row"> -->
 
-        <form class="row">
+      <form class="row">
 
-          <input id="id" type="hidden">
-          <!-- fila 1 -->
-          <div class="row row-1">
-            <div class="col-6 text-start d-flex justify-content-center gap-2">
-              <span>Secador#:</span>
-              <Select name="listSecadores" id="listSecadores" class="inputEntry">
-                <option value="1" selected>1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </Select>
-            </div>
-            
-            <div class="col-6 text-start d-flex justify-content-center gap-2">
-              <span>Turno:</span>
-              <Select name="listTurnos" id="listTurnos" class="inputEntry">
-                <option value="A" selected>A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-              </Select>
-            </div>
+        <input id="id" type="hidden">
+        <!-- fila 1 -->
+        <div class="row row-1">
+          <div class="col-6 text-start d-flex justify-content-center gap-2">
+            <span>Secador#:</span>
+            <Select name="listSecadores" id="listSecadores" class="inputEntry">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </Select>
           </div>
-          
-          
-          <!-- fila 2 -->
+
+          <div class="col-6 text-start d-flex justify-content-center gap-2">
+            <span>Turno:</span>
+            <Select name="listTurnos" id="listTurnos" class="inputEntry">
+              <option value="A" selected>A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+            </Select>
+          </div>
+        </div>
+
+
+        <!-- fila 2 -->
         <div class="row row-1"">
-            <div class="col text-start d-flex justify-content-center gap-2 ">
+            <div class=" col text-start d-flex justify-content-center gap-2 ">
               <span>Hora de Inicio: </span>
-              <input type="time" name="" id="hora">
-            </div>
-          </div>
-          
-          <div class="row row-1">
-            <div class="col text-start d-flex justify-content-center gap-2">
-              <span>Formato: </span>
-              <!-- <input type="text" id="formato" class="inputEntry"> -->
-              <!--  -->
+              <input type=" time" name="" id="hora">
+        </div>
+        </div>
+
+        <!-- <div class="row row-1"> -->
+        <!-- <div class="col text-start d-flex justify-content-center gap-2"> -->
+        <!-- <span>Formato: </span>
+
               <Select name="listSecadores" id="formato" class="inputEntry">
                 <option value="1X1" selected>1X1</option>
                 <option value="PNY">PNY</option>
@@ -318,58 +248,76 @@
                 <option value="KAL">KAL</option>
                 <option value="FAN">FAN</option>
                 <option value="OCT">OCT</option>
-              </Select>
-              <!--  -->
-            </div>
+              </Select> -->
+        <!--  -->
+        <!-- </div> -->
+        <!-- </div> -->
+
+        <div class="row row-2">
+          <div class="col-6 text-start">
+
+            <span>Color:</span>
+            <input type="text" id="color" class="inputEntry">
           </div>
-          
-          <div class="row row-2">
-            <div class="col-6 text-start">
-              
-              <span>Color:</span>
-              <input type="text" id="color" class="inputEntry">
-            </div>
-            <div class="col-6 text-start">
-              
-              <span>Contador SQFT:</span>
-              <input type="number" id="contadorSQFT" class="inputEntry" min="0">
-              
-            </div>
+          <div class="col-6 text-start">
+
+            <span>Contador SQFT:</span>
+            <input type="number" id="contadorSQFT" class="inputEntry" min="0">
+
           </div>
-          
-          
-          <div class="row row-2">
-            <div class="col-6 text-start">
-              
-              <span>sqft Requeridos:</span>
-              <input type="number" id="sqftMeta" class="inputEntry" min="0">
-            </div>
-            <div class="col-6 text-start">
-              
-              <span>% Cumplimiento:</span>
-              <input type="number" id="Cumplimiento" class="inputEntry" min="0">
-            </div>
+        </div>
+
+
+        <div class="row row-2">
+          <div class="col-6 text-start">
+            <span>SQFT Requeridos:</span>
+            <input type="number" id="sqftMeta" class="inputEntry" min="0">
           </div>
-          
-          <div class="row row-3">
-            <div class="col d-flex flex-column">
-              <span>Comentarios</span>
-              <textarea name="" id="comentarios"></textarea>
-            </div>
+
+          <div class="col-6 text-start">
+            <span>Formato: </span>
+
+            <Select name="listSecadores" id="formato" class="inputEntry">
+              <option value="1X1" selected>1X1</option>
+              <option value="PNY">PNY</option>
+              <option value="1X2">1X2</option>
+              <option value="1X3">1X3</option>
+              <option value="HEX">HEX</option>
+              <option value="2X2">2X2</option>
+              <option value="2X4">2X4</option>
+              <option value="3X3">3X3</option>
+              <option value="ARAB">ARAB</option>
+              <option value="25PICK">25PICK</option>
+              <option value="ROM">ROM</option>
+              <option value="KAL">KAL</option>
+              <option value="FAN">FAN</option>
+              <option value="OCT">OCT</option>
+            </Select>
+            <!-- <span>% Cumplimiento:</span> -->
+            <!-- <input type="number" id="Cumplimiento" class="inputEntry" min="0"> -->
+
           </div>
-          
-          <div class="row row-4">
-            <div class="col-6 d-flex justify-content-center align-items-center">
-              <button type="submit">Guardar</button>
-            </div>
-            <div class="col-6 d-flex justify-content-center align-items-center">
-              <a href="dataTablesConsulta.html" id="testOperacion">Mostrar</a>
-            </div>
+        </div>
+
+        <div class="row row-3">
+          <div class="col d-flex flex-column">
+            <span>Comentarios</span>
+            <textarea name="" id="comentarios"></textarea>
           </div>
-          
-        </form>
-        <!-- <button onclick="operacion()">operacion</button> -->
-      
+        </div>
+
+        <div class="row row-4">
+          <div class="col-6 d-flex justify-content-center align-items-center">
+            <button type="submit">Guardar</button>
+          </div>
+          <div class="col-6 d-flex justify-content-center align-items-center">
+            <a href="dataTablesConsulta.html" id="testOperacion">Mostrar</a>
+          </div>
+        </div>
+
+      </form>
+      <!-- <button onclick="operacion()">operacion</button> -->
+
       <!-- </div> -->
     </section>
   </main>
@@ -464,10 +412,10 @@
       
     </div>
      -->
-    
-    
-    
-    <!--  -->
+
+
+
+  <!--  -->
   <main class="my-3 p-3 gap-3 d-flex flex-column container-main d-none">
     <a href="Opciones.html"><i class="bi bi-arrow-left-circle"></i></a>
 
@@ -525,24 +473,24 @@
 
   <!-- OPERACIONES -->
   <script>
-      let contadorSQFT = document.getElementById('#contadorSQFT');
-      let sqftMeta = document.getElementById('#sqftMeta'); //SQFT REQ
-      let Cumplimiento = document.getElementById('#Cumplimiento');
-      
-
-      function operacion() {
-
-        let operacionCumplimiento = (contadorSQFT.value / sqftMeta.value) * 100;
-        Cumplimiento.value = operacionCumplimiento;
-
-        console.log(Cumplimiento);
-      }
+    let contadorSQFT = document.getElementById('#contadorSQFT');
+    let sqftMeta = document.getElementById('#sqftMeta'); //SQFT REQ
+    let Cumplimiento = document.getElementById('#Cumplimiento');
 
 
+    function operacion() {
 
-      // let bnt = document.getElementById('testOperacion');
+      let operacionCumplimiento = (contadorSQFT.value / sqftMeta.value) * 100;
+      Cumplimiento.value = operacionCumplimiento;
 
-      // btn
+      console.log(Cumplimiento);
+    }
+
+
+
+    // let bnt = document.getElementById('testOperacion');
+
+    // btn
 
 
   </script>
@@ -591,10 +539,11 @@
 
       let contadorSQFT = $('#contadorSQFT').val();
       let sqftMeta = $('#sqftMeta').val(); //SQFT REQ
-      
+
       // let operacionCumplimiento = (contadorSQFT / sqftMeta) * 100;
-      
-      let Cumplimiento = $('#Cumplimiento').val();
+
+      // let Cumplimiento = $('#Cumplimiento').val();
+      let Cumplimiento = (contadorSQFT / sqftMeta) * 100 + '%';
       // Cumplimiento.val() = operacionCumplimiento;
 
 
