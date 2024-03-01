@@ -127,7 +127,7 @@
 <body>
 
     <section class="d-flex align-items-center row-head p-3 container-arrow">
-        <a href="Opciones.html" class="col-2"><i class="bi bi-arrow-left-circle"></i></a>
+        <a href="index.html" class="col-2"><i class="bi bi-arrow-left-circle"></i></a>
     </section>
 
 
@@ -142,11 +142,7 @@
         <div class="row">
             <div class="col-lg-6">
 
-                <!-- *************** -->
-                <!-- <button id="btnNuevo" class="btn btn-primary" data-toggle="tooltip" title="Nuevo Producto"
-                    data-bs-toggle="modal" data-bs-target="#modalAltaEdicion"><i
-                        class="bi bi-plus-circle-fill"></i></button> -->
-                <!-- Modal -->
+
                 <div id="modalAltaEdicion" role="dialog" class="modal fade" tabindex="-1"
                     aria-labelledby="modalAltaEdicionLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -294,32 +290,18 @@
     <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase.js"></script>
 
-
+    
     <!-- DATATABLES -->
-    <script src="js/app_dataTablesConsulta.js"></script>
+    <script src="js/app_dataTablesConsultaIndividual.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    
+    <!--  -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
 
-    <!-- <script>
-    let secador = document.getElementById('listSecadores');
-
-    secador.value = "3X1";
-
-    alert(secador);
-    </script> -->
-    <!-- fixed -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/fixedheader/3.1.9/js/dataTables.fixedHeader.min.js"></script>
-    <script>
-        $(document).ready(function() {
-  var table = $('#tablaProductos').DataTable({
-    // Configuración de DataTables
-  });
-
-  new $.fn.dataTable.FixedHeader(table);
-}); -->
-    </script>
 </body>
 
 </html>
