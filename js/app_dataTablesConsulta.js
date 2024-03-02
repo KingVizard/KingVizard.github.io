@@ -157,7 +157,8 @@ $(document).ready(function() {
         let fila = $('#tablaProductos').dataTable().fnGetData($(this).closest('tr'));
 
         let id = fila[0];
-        db.ref(`productos/${id}`).remove()
+        console.log('Este es el id del elemento eliminado: ' + id);
+        db.ref(`produccion/${id}`).remove()
         Swal.fire('¡Eliminado!', 'El producto ha sido eliminado.', 'success')
       }
     })

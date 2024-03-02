@@ -43,28 +43,7 @@ $(document).ready(function() {
   });
 
 
-  // coleccionProduccion.where('fecha', '==', 'Lun, 26 Feb 2024').get().then((querySnapshot) => {
-  //   querySnapshot.forEach((doc) => {
-  //     // Accede a los datos de cada documento
-  //     console.log(doc.data());
 
-  //   });
-  // }).catch((error) => {
-  //   console.log("Error al realizar la consulta: ", error);
-  // });
-
-
-  // coleccionProduccion.where("formato", "==", "PNY")
-  // .get()
-  // .then((querySnapshot) => {
-  //     querySnapshot.forEach((doc) => {
-  //         // doc.data() is never undefined for query doc snapshots
-  //         console.log(doc.id, " => ", doc.data());
-  //     });
-  // })
-  // .catch((error) => {
-  //     console.log("Error getting documents: ", error);
-  // });
 
 
   // Realizar una consulta con la cláusula WHERE
@@ -78,13 +57,11 @@ ref
   .equalTo(fechaCompleta)
   .on("child_added", function(snapshot) {
 
-    // console.log(snapshot.key);
-    // console.log(snapshot.val());
     dataset = [snapshot.key, snapshot.child("secador").val(), snapshot.child("turnos").val(), snapshot.child("hora").val(), snapshot.child("fecha").val(), snapshot.child("formato").val(), snapshot.child("color").val(),  snapshot.child("contadorSQFT").val(),  snapshot.child("sqftMeta").val(),  snapshot.child("Cumplimiento").val(),  snapshot.child("comentarios").val()];
     table.rows.add([dataset]).draw();
   });
 
-  //CHILD_ADDED
+  // CHILD_ADDED
   // coleccionProduccion.on('child_added', datos => {    
   //   dataset = [datos.key, datos.child("secador").val(), datos.child("turnos").val(), datos.child("hora").val(), datos.child("fecha").val(), datos.child("formato").val(), datos.child("color").val(),  datos.child("contadorSQFT").val(),  datos.child("sqftMeta").val(),  datos.child("Cumplimiento").val(),  datos.child("comentarios").val()];
   //   table.rows.add([dataset]).draw();
@@ -186,7 +163,7 @@ ref
         let fila = $('#tablaProductos').dataTable().fnGetData($(this).closest('tr'));
 
         let id = fila[0];
-        db.ref(`productos/${id}`).remove()
+        db.ref(`produccion/${id}`).remove()
         Swal.fire('¡Eliminado!', 'El producto ha sido eliminado.', 'success')
       }
     })
