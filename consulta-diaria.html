@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
+    <!-- fixed -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/fixedheader/3.1.9/css/fixedHeader.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" href="css/consulta-diaria.css">
+
+</head>
+
+<body>
+
+    <section class="d-flex align-items-center row-head p-3 container-arrow">
+        <a href="registrar-produccion.html" class="col-2"><i class="bi bi-arrow-left-circle"></i></a>
+    </section>
+
+
+    <div class="container">
+
+        <div class="row text-light">
+            <div class="col text-center title">
+                <h1>Consultar Diaria</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+
+
+                <div id="modalAltaEdicion" role="dialog" class="modal fade" tabindex="-1"
+                    aria-labelledby="modalAltaEdicionLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+
+                            <!-- HEADER -->
+                            <div class="modal-header bg-primary text-light">
+                                <h5 class="modal-title" id="modalAltaEdicionLabel">Edicion</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            <!-- BODY -->
+                            <form>
+                                <div class="modal-body">
+
+                                    <!-- //////// -->
+                                    <input id="id" type="hidden">
+
+                                    <div class="form-group">
+                                        <label>Secador#: </label>
+                                        <Select name="listSecadores" id="listSecadores" class="inputEntry form-control">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </Select>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Turno: </label>
+                                        <Select name="listTurnos" id="listTurnos" class="inputEntry form-control">
+                                            <option value="A" selected>A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                        </Select>
+
+                                    </div>
+
+                                    <div class="form-group" hidden>
+                                        <label>Hora: </label>
+                                        <input type="text" name="" id="hora" class="form-control">
+                                    </div>
+
+                                    <div class="form-group" hidden>
+                                        <label>fecha: </label>
+                                        <input type="text" name="" id="fecha" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Color: </label>
+                                        <input type="text" id="color" class="inputEntry form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>ContadorSQFT: </label>
+                                        <input type="number" id="contadorSQFT" class="inputEntry form-control" min="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>SQFT Requeridos: </label>
+                                        <input type="number" id="sqftMeta" class="inputEntry form-control" min="0">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Formato: </label>
+                                        <Select name="" id="formato" class="inputEntry form-control">
+                                            <option value="1X1" selected>1X1</option>
+                                            <option value="PNY">PNY</option>
+                                            <option value="1X2">1X2</option>
+                                            <option value="1X3">1X3</option>
+                                            <option value="HEX">HEX</option>
+                                            <option value="2X2">2X2</option>
+                                            <option value="2X4">2X4</option>
+                                            <option value="3X3">3X3</option>
+                                            <option value="ARAB">ARAB</option>
+                                            <option value="25PICK">25PICK</option>
+                                            <option value="ROM">ROM</option>
+                                            <option value="KAL">KAL</option>
+                                            <option value="FAN">FAN</option>
+                                            <option value="OCT">OCT</option>
+                                        </Select>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Comentarios: </label>
+                                        <textarea name="" id="comentarios" class="form-control"></textarea>
+
+
+                                    </div>
+                                </div>
+
+                                <!-- FOOTER -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" id="btnGuardar" class="btn btn-primary"
+                                        translate="1">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- *************** -->
+                <table id="tablaProductos" class="table table-bordered table-striped" style="width: 100%">
+                    <thead class="text-center">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">SECADOR</th>
+                            <th scope="col">TURNO</th>
+                            <th scope="col">HORA</th>
+                            <th scope="col">FECHA</th>
+                            <th scope="col">FORMATO</th>
+                            <th scope="col">COLOR</th>
+                            <th scope="col">CONTADORSQFT</th>
+                            <th scope="col">SQFTREQUERIDOS</th>
+                            <th scope="col">% CUMPLIMIENTO</th>
+                            <th scope="col">COMENTARIOS</th>
+                            <th scope="col">ACCIONES</th>
+                        </tr>
+                    </thead>
+                </table>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <!-- SWEETALERT -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
+
+    <!-- FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase.js"></script>
+
+
+    <!-- DATATABLES -->
+    <script src="js/consulta-diaria.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+    <!--  -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script> -->
+
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+
+</body>
+
+</html>

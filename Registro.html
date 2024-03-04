@@ -7,212 +7,18 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/registro.css">
   <title>Registro de usuarios</title>
 </head>
-
-<style>
-  /* @media screen and (max-width: 415px) { */
-
-  * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-
-  :root {
-    --bg-logo-color: radial-gradient(circle, #ffa600 20%, #ff3300 80%);
-    --main-color: #d82651;
-    /* --main-color: #FF6B00; */
-    --bg-color: linear-gradient(90deg, #ff3300 20%, #d82651 80%);
-    /* --bg-color: linear-gradient(90deg, #ffa600 20%, rgba(255,51,0,1) 80%); */
-    --color-links: #bbb;
-  }
-
-  body {
-    height: 100vh;
-    width: 100vw;
-    /* overflow: hidden; */
-    display: flex;
-    flex-direction: column;
-
-    .container-arrow {
-
-      height: 3.4rem;
-      background: #b21942;
-
-      a {
-        color: #fff;
-        font-size: 1.7rem;
-
-      }
-    }
-
-  }
-
-  main {
-    /* height: 100%; */
-    flex-grow: 1;
-    width: 100%;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    overflow: hidden;
-    font-size: 18px;
-    /* background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%); */
-    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
-    background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
-    /* color: #0D6EFD; */
-    /* background: #0D6EFD; */
-    /* background: #ffa600; */
-
-  }
-
-  main section {
-    /* height: 75vh; */
-    height: 80%;
-    width: 90%;
-    /* background: #aaa; */
-    /* background: var(--main-color); */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    row-gap: 10px;
-    border-radius: 20px;
-    /* background: #d82651; */
-    background: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
-
-    margin-top: 3.5rem;
-  }
-
-  main section .logo {
-    height: 120px;
-    width: 236px;
-    /* background: var(--bg-logo-color); */
-    border-radius: 100%;
-    overflow: hidden;
-    position: relative;
-  }
-
-  main section .logo::before {
-    content: '';
-    width: calc(100% - 15px);
-    height: calc(100% - 15px);
-    /* background: var(--bg-logo-color); */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    clip-path: polygon(evenodd, 25% 25%, 50% 25%, 75% 50%, 50% 75%, 25% 50%, 37.5% 37.5%, 37.5% 62.5%, 62.5% 62.5%, 62.5% 37.5%, 50% 37.5%, 62.5% 50%, 50% 62.5%, 37.5% 50%, 43.75% 43.75%, 50% 43.75%, 56.25% 50%, 50% 56.25%, 43.75% 50%, 46.88% 46.88%, 53.13% 46.88%, 53.13% 53.13%, 46.88% 53.13%, 46.88% 46.88%, 50% 43.75%, 56.25% 43.75%, 56.25% 56.25%, 43.75% 56.25%, 43.75% 43.75%, 50% 37.5%, 37.5% 37.5%, 50% 25%, 75% 25%, 75% 75%, 25% 75%, 0% 50%, 50% 0%, 100% 50%, 50% 100%, 25% 75%);
-  }
-
-  main section .logo img {
-    height: 100%;
-    width: 100%;
-    padding: 10px;
-    object-fit: contain;
-    position: relative;
-  }
-
-  main section h2 {
-    font-size: 30px;
-    font-weight: bold;
-    color: var(--main-color);
-    /* color: #0D6EFD; */
-  }
-
-  main section .container-form {
-    /* background: #ddd; */
-    width: 90%;
-  }
-
-  main section .container-form form {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    row-gap: 22px;
-    /* background: red; */
-  }
-
-  main section .container-form form p {
-    margin: 0;
-    font-weight: bold;
-  }
-
-  main section .container-form form p label {
-    display: block;
-    margin-bottom: 5px;
-    color: var(--main-color);
-  }
-
-  main section .container-form form p input {
-    height: 35px;
-    width: 100%;
-    border: none;
-    outline: none;
-    border-radius: 15px;
-    padding-left: 10px;
-    background: #eee;
-    /* margin-left: 10px; */
-  }
-
-  main section .container-form form p input {
-    height: 35px;
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #000;
-    outline: none;
-    border-radius: 0px;
-    padding-left: 10px;
-    background: none;
-  }
-
-  main section .container-form form p input[type="submit"] {
-    font-size: 20px;
-    font-weight: bold;
-    color: #fff;
-    height: 45px;
-    border: 0;
-    border-radius: 15px;
-    background: var(--bg-color);
-  }
-
-  /* main section .container-form form p input::placeholder {
-        padding-left: 10px;
-    } */
-
-  main section .container-form form p span {
-    display: block;
-    text-align: end;
-  }
-
-  main section .container-form form p span a {
-    text-decoration: none;
-    color: var(--color-links);
-  }
-
-  main .carrucel {
-    display: none;
-  }
-
-  /* } */
-</style>
 
 <body>
 
   <section class="d-flex align-items-center row-head p-3 container-arrow">
-    <a href="Opciones.html" class="col-2"><i class="bi bi-arrow-left-circle"></i></a>
+    <a href="index.html" class="col-2"><i class="bi bi-arrow-left-circle"></i></a>
   </section>
 
   <main>
-
     <section>
-      <!-- <div class="logo">
-        <img src="img/logoDaltile.png" alt="">
-    </div> -->
       <h2>REGISTRO</h2>
       <div class="container-form">
         <form id="MainForm">
@@ -241,208 +47,25 @@
           <p>
             <input type="submit" value="Registrar">
           </p>
-
         </form>
       </div>
     </section>
   </main>
 
-  <!-- <main class="my-3">
-    <form id="MainForm">
-      <h2>REGISTRO</h2>
-      <input id="emailInp" type="text" placeholder="email">
-      <input id="passwordInp" type="password" placeholder="contrasena">
-      <input id="nameInp" type="text" placeholder="nomber completo">
-      <input id="secadorInp" type="number" min="1" max="4" placeholder="no. secador">
-      <input id="turnoInp" type="text" placeholder="turno" maxlength="1">
-
-      <button type="submit">Registrar</button>
-      <br><br><br>
-      <a href="login.html">Login</a>
-
-    </form>
-  </main> -->
-  <footer class="bg-dark text-white">
-
-  </footer>
-
-
 
   <!-- FIREBASE -->
   <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase.js"></script>
 
-
-  <!-- <script src="js/main.js"></script> -->
+  <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
 
+  <!-- Sweetalert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
 
+  <script src="js/registro.js"></script>
 
-  <script>
-
-    // -- SDK FIREBASE  
-    const firebaseConfig = {
-      apiKey: "AIzaSyAXoDvbYkbX1Y-VuZmEjBTXv1BywK40Lmo",
-      authDomain: "testappwebestadias.firebaseapp.com",
-      databaseURL: "https://testappwebestadias-default-rtdb.firebaseio.com",
-      projectId: "testappwebestadias",
-      storageBucket: "testappwebestadias.appspot.com",
-      messagingSenderId: "361048886546",
-      appId: "1:361048886546:web:fde40acd0deeaaf207b7cb",
-      measurementId: "G-FM5VLLCV3F"
-    };
-
-    // -- INICIALIZANDO LA BD
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.database();
-
-    // -- INICIALIZANDO LA BD
-    // coleccionProduccion = db.ref().child('produccion');
-    // import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    // import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
-    // import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-
-
-    // import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
-    // const firebaseConfig = {
-    //   apiKey: "AIzaSyAXoDvbYkbX1Y-VuZmEjBTXv1BywK40Lmo",
-    //   authDomain: "testappwebestadias.firebaseapp.com",
-    //   databaseURL: "https://testappwebestadias-default-rtdb.firebaseio.com",
-    //   projectId: "testappwebestadias",
-    //   storageBucket: "testappwebestadias.appspot.com",
-    //   messagingSenderId: "361048886546",
-    //   appId: "1:361048886546:web:fde40acd0deeaaf207b7cb",
-    //   measurementId: "G-FM5VLLCV3F"
-    // };
-
-
-    //     // -- INICIALIZANDO LA BD
-    //     firebase.initializeApp(firebaseConfig);
-    // const db = firebase.database();
-
-    // -- INICIALIZANDO LA BD
-    // coleccionProduccion = db.ref().child('produccion');
-
-    // const app = initializeApp(firebaseConfig);
-    // const analytics = getAnalytics(app);
-    // const db = getDatabase();
-    // const auth = getAuth(app);
-
-
-    // coleccionUsers = db.ref().child('users');
-
-
-
-    let MainForma = document.getElementById('MainForm');
-
-    // VALIDACIONES
-
-
-
-
-    // BOTON
-    let RegisterUser = evt => {
-      evt.preventDefault();
-
-      let email = document.getElementById('emailInp').value;
-      let password = document.getElementById('passwordInp').value;
-      let name = document.getElementById('nameInp').value;
-      let secador = document.getElementById('secadorInp').value;
-      let turno = document.getElementById('turnoInp').value;
-
-
-      if (validar_email(email) == false || validar_pass(password) == false) {
-        alert('Correo y/o Contraseña incorrecto ->');
-        return
-      }
-
-
-      if (validar_campo(name) == false || validar_campo(secador) == false || validar_campo(turno) == false) {
-        alert('Uno o varios campos estan vacios');
-        return
-      }
-
-
-
-
-      auth.createUserWithEmailAndPassword(email, password)
-        .then(function () {
-          // const users = userCredential.user;
-
-          // DECLARAR VARIABLE USUARIO
-          let user = auth.currentUser
-
-          // AGREGAR USUARIO A LA BD
-          let database_ref = db.ref();
-          // let coleccionUsers;
-
-          // CREAR LA INFORMACION DEL USUARIO
-          var user_data = {
-            email: email,
-            name: name,
-            secador: secador,
-            turno: turno,
-            last_login: Date.now()
-          }
-
-          database_ref.child('users/' + user.uid).set(user_data);
-          // coleccionUsers + user.uid.set(user_data);
-
-
-
-
-
-          alert("Usuario registrado");
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-
-          console.log(email + "<-email");
-          console.log(password + "<-pass");
-
-
-          alert(errorCode + ' error');
-        });
-    }
-
-    MainForma.addEventListener('submit', RegisterUser);
-
-
-
-    function validar_email(email) {
-      let expression = /^[^@]+@\w+(\.\w+)+\w$/
-      if (expression.test(email) == true) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-
-    function validar_pass(password) {
-      if (password <= 6) {
-        return false;
-      } else {
-        return true;
-      }
-    }
-
-    function validar_campo(field) {
-      if (field == null) {
-        return false;
-      }
-      if (field.lenght <= 0) {
-        return false;
-      } else {
-        return true;
-      }
-    }
-
-
-  </script>
 </body>
 
 </html>

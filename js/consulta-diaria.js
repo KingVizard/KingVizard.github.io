@@ -61,11 +61,6 @@ ref
     table.rows.add([dataset]).draw();
   });
 
-  // CHILD_ADDED
-  // coleccionProduccion.on('child_added', datos => {    
-  //   dataset = [datos.key, datos.child("secador").val(), datos.child("turnos").val(), datos.child("hora").val(), datos.child("fecha").val(), datos.child("formato").val(), datos.child("color").val(),  datos.child("contadorSQFT").val(),  datos.child("sqftMeta").val(),  datos.child("Cumplimiento").val(),  datos.child("comentarios").val()];
-  //   table.rows.add([dataset]).draw();
-  // });
 
   //CHILD_CHANGED
   coleccionProduccion.on('child_changed', datos => {
