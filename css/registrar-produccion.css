@@ -10,17 +10,12 @@ body {
   background: #e1e1e1;
   display: flex;
   flex-direction: column;
-
-
   .container-arrow {
-
     height: 3.4rem;
     background: #b21942;
-
     a {
       color: #fff;
       font-size: 1.7rem;
-
     }
   }
 
@@ -30,7 +25,6 @@ body {
     align-items: center;
     height: 100%;
     width: 100%;
-
     .container {
       height: 90%;
       width: 100%;
@@ -38,24 +32,19 @@ body {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-
       .title {
         text-shadow: 1px 1px 2px black;
       }
-
       form {
         height: 100%;
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-
         .row .col span,
         .col-6 span {
           color: #fff;
         }
-
-
         .row-1 {
           display: flex;
           align-items: center;
@@ -64,43 +53,35 @@ body {
           width: 100%;
           background: yellowgreen;
           background: #ec4767;
-
           .col-6 Select,
           .col input {
             padding: 0 5px;
             width: 5rem;
           }
-
           .col-6 Select:focus,
           .col input:focus {
             outline: none;
           }
         }
-
         .row-2 {
           border-radius: 10px;
           height: 5rem;
           width: 100%;
           background: rebeccapurple;
           background: #ec4767;
-
           .col-6 {
             display: flex;
             flex-direction: column;
             row-gap: 3px;
             justify-content: center;
-
             input {
               padding: 0 5px;
-
             }
-
             input:focus {
               outline: none;
             }
           }
         }
-
         .row-3 {
           border-radius: 10px;
           height: 10.5rem;
@@ -108,25 +89,19 @@ body {
           background: slateblue;
           background: #ec4767;
           padding: 10px;
-
-
           #comentarios {
             resize: none;
             width: 100%;
             height: 100%;
             padding: 0 5px;
           }
-
           #comentarios:focus {
             outline: none;
           }
-
           .col {
             row-gap: 3px;
-
           }
         }
-
         .row-4 {
           button {
             background: red;
@@ -138,7 +113,6 @@ body {
             border: none;
             font-weight: bold;
           }
-
           a {
             text-align: center;
             line-height: 1;
@@ -154,11 +128,8 @@ body {
             justify-content: center;
             align-items: center;
           }
-
         }
       }
-
-
     }
   }
 }

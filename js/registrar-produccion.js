@@ -1,4 +1,3 @@
-
 // -- SDK FIREBASE
 const firebaseConfig = {
   apiKey: "AIzaSyAXoDvbYkbX1Y-VuZmEjBTXv1BywK40Lmo",
@@ -14,9 +13,7 @@ const firebaseConfig = {
 // -- INICIALIZANDO LA BD
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
-
 coleccionProduccion = db.ref().child('produccion');
-
 
 // -- VALORES A GUARDAR 
 $('form').submit(function (e) {
@@ -24,7 +21,6 @@ $('form').submit(function (e) {
   let fechaHora = new Date();
   let diaSemana = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
   let mesAnyo = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
-
   let id = $('#id').val();
   let secador = $('#listSecadores').val();
   let turnos = $('#listTurnos').val();
@@ -32,20 +28,9 @@ $('form').submit(function (e) {
   let fechaCompleta = `${diaSemana[fechaHora.getDay()]}, ${fechaHora.getDate()} ${mesAnyo[fechaHora.getMonth()]} ${fechaHora.getFullYear()}`;
   let color = $('#color').val();
   let formato = $('#formato').val();
-
-  /* OPERACIONES*/
-
   let contadorSQFT = $('#contadorSQFT').val();
   let sqftMeta = $('#sqftMeta').val(); //SQFT REQ
-
-  // let operacionCumplimiento = (contadorSQFT / sqftMeta) * 100;
-
-  // let Cumplimiento = $('#Cumplimiento').val();
   let Cumplimiento = (contadorSQFT / sqftMeta) * 100 + '%';
-  // Cumplimiento.val() = operacionCumplimiento;
-
-
-  /**/
   let comentarios = $('#comentarios').val();
 
   let idFirebase = id;
@@ -56,25 +41,19 @@ $('form').submit(function (e) {
   data = { secador: secador, turnos: turnos, hora: hora, fecha: fechaCompleta, color: color, formato: formato, contadorSQFT: contadorSQFT, sqftMeta: sqftMeta, Cumplimiento: Cumplimiento, comentarios: comentarios };
 
   actualizacionData = {};
-
   actualizacionData[`/${idFirebase}`] = data;
-
   coleccionProduccion.update(actualizacionData);
   id = '';
 
   Swal.fire('!Se registro correctamente!', '', 'success');            
 
   let inputHora = document.getElementById('hora');
-
   let hora_ = fechaHora.getHours();
   let minutos = fechaHora.getMinutes();
   let horaActual = (hora < 10 ? "0" + hora : hora) + ":" + (minutos < 10 ? "0" + minutos : minutos);
 
   $('form').trigger('reset');
   inputHora.value = horaActual;
-
-
-
 });
 
 // asignando la hora actual como valor predeterminado
@@ -83,11 +62,7 @@ let fechaHora = new Date();
 let hora = fechaHora.getHours();
 let minutos = fechaHora.getMinutes();
 let horaActual = (hora < 10 ? "0" + hora : hora) + ":" + (minutos < 10 ? "0" + minutos : minutos);
-
 inputHora.value = horaActual;
-
-
-
 
 // iconos
 const iconoEditar = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/></svg>';
@@ -107,5 +82,3 @@ function mostrarProduccion({ secador, turnos, hora, color, formato, contadorSQFT
         <td><button class="btnEditar btn btn-secondary" data-toogle="tooltip" title="Editar">${iconoEditar}</button> <button class="btnBorrar btn btn-danger" data-toogle="tooltip" title="Borrar">${iconoEliminar}</button></td>
         `
 };
-
-

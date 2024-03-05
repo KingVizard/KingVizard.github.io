@@ -99,15 +99,6 @@ $(document).ready(function() {
     $('#modalAltaEdicion').modal('hide');
   });
 
-  //botones
-  // $('#btnNuevo').click(function() {
-  //   $('#id').val('');
-  //   $('#secador').val('');
-  //   $('#turnos').val('');
-  //   $('#hora').val('');
-  //   $('form').trigger('reset');
-  //   $('#modalAltaEdicion').modal('show');
-  // });
 
   $('#tablaProductos').on('click', '.btnEditar', function() {
     filaEditada = table.row($(this).parents('tr'));
