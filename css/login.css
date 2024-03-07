@@ -14,16 +14,12 @@
 body {
     height: 100vh;
     width: 100vw;
-    overflow: hidden;
 }
 
 main {
     height: 100%;
     width: 100%;
     background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
     font-size: 18px;
     background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
@@ -31,6 +27,7 @@ main {
 }
 
 main section {
+    margin-top: 5rem;
     height: 75vh;
     width: 90%;
     display: flex;
