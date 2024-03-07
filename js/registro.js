@@ -14,22 +14,17 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.database();
-
 let MainForma = document.getElementById('MainForm');
-
-// VALIDACIONES
 
 // BOTON
 let RegisterUser = evt => {
     evt.preventDefault();
-
     let email = document.getElementById('emailInp').value;
     let password = document.getElementById('passwordInp').value;
     let name = document.getElementById('nameInp').value;
     let secador = document.getElementById('secadorInp').value;
     let turno = document.getElementById('turnoInp').value;
 
-    
     if (validar_email(email) == false || validar_pass(password) == false) {
         Swal.fire('!Advertencia!', 'Correo y/o Contraseña incorrecto', 'warning');
         return
@@ -46,11 +41,8 @@ let RegisterUser = evt => {
 
             // DECLARAR VARIABLE USUARIO
             let user = auth.currentUser
-            
             // AGREGAR USUARIO A LA BD
             let database_ref = db.ref();
-            // let coleccionUsers;
-            
             // CREAR LA INFORMACION DEL USUARIO
             var user_data = {
                 email: email,
@@ -69,14 +61,10 @@ let RegisterUser = evt => {
             const errorMessage = error.message;
 
             Swal.fire('!Error!', errorMessage, 'error')
-
         });
-
     }
 
 MainForma.addEventListener('submit', RegisterUser);
-
-
 
 function validar_email(email) {
     let expression = /^[^@]+@\w+(\.\w+)+\w$/
@@ -106,6 +94,5 @@ function validar_campo(field) {
      else {
         return true;
     }
-
 }
 
