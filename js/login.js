@@ -24,12 +24,39 @@ let SignIn = evt => {
 
   auth.signInWithEmailAndPassword(email, password)
     .then(function () {
-      location.replace("index.html");
+      location.replace("menu.html");
     })
-    .catch(function () {
-      const errorCode = error.code;
+      .catch((error) => {
+      // const errorCode = error.code;
       const errorMessage = error.message;
-      alert(errorMessage);
+      Swal.fire('!Ocurrio un error!', errorMessage, 'error');       
+      
+      
+  //     firebase.auth().signInWithEmailAndPassword(email, password)
+  // .then((userCredential) => {
+  //   // Inicio de sesión exitoso
+  //   const user = userCredential.user;
+  //   // ...
+  // })
+  // .catch((error) => {
+  //   // Error durante el inicio de sesión
+  //   const errorCode = error.code;
+  //   const errorMessage = error.message;
+  //   // Personaliza los mensajes de error según el código de error
+  //   if (errorCode === 'auth/invalid-email') {
+  //     // Mensaje de error para correo electrónico inválido
+  //     console.log('El correo electrónico ingresado no es válido');
+  //   } else if (errorCode === 'auth/wrong-password') {
+  //     // Mensaje de error para contraseña incorrecta
+  //     console.log('La contraseña ingresada es incorrecta');
+  //   } else {
+  //     // Mensaje de error genérico
+  //     console.log('Ocurrió un error durante el inicio de sesión');
+  //   }
+  // });
+
+
+
     });
 }
 

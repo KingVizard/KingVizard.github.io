@@ -19,13 +19,8 @@ body {
     overflow: hidden;
     font-family: "Raleway", sans-serif;
     background: #fff;
-    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
     background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
 }
-
-.open-sans-title {
-    font-family: "Raleway", sans-serif;
-  }
 
 main {
     height: 100%;
@@ -35,8 +30,7 @@ main {
 }
 
 main section {
-    /* height: 75vh; */
-    height: 75%;
+    height: 70%;
     width: 90%;
     row-gap: 10px;
     border-radius: 20px;
@@ -94,15 +88,24 @@ main section .container-form form p input {
     width: 100%;
     border: none;
     outline: none;
-    border-radius: 15px;
+    border-radius: 10px;
     padding-left: 10px;
     background: #eee;
 }
 
 main section .container-form form p input[type="submit"] {
     font-size: 20px;
+    border-radius: 15px;
     font-weight: bold;
     color: #fff;
     height: 45px;
     background: var(--bg-color);
 }
+
+.swal2-height-auto {
+    height: none !important;
+}
+
+body.swal2-height-auto {
+    display: none;
+  }

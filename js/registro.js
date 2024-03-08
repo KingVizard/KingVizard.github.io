@@ -87,7 +87,7 @@ function validar_campo(field) {
     if (field == null) {
         return false;
     }
-    alert('campos: ' + field);
+    // alert('campos: ' + field);
     if (field.length <= 10) {
         return false;
     }
