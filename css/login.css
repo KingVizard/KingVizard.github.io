@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -15,26 +17,27 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-}
-
-main {
-    height: 100%;
-    width: 100%;
+    font-family: "Raleway", sans-serif;
     background: #fff;
-    overflow: hidden;
-    font-size: 18px;
     background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
     background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
 }
 
+.open-sans-title {
+    font-family: "Raleway", sans-serif;
+  }
+
+main {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-size: 18px;
+}
+
 main section {
-    margin-top: 2.5rem;
-    height: 75vh;
+    /* height: 75vh; */
+    height: 75%;
     width: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     row-gap: 10px;
     border-radius: 20px;
     background: #fff;
@@ -49,17 +52,6 @@ main section .logo {
     position: relative;
 }
 
-main section .logo::before {
-    content: '';
-    width: calc(100% - 15px);
-    height: calc(100% - 15px);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    clip-path: polygon(evenodd, 25% 25%, 50% 25%, 75% 50%, 50% 75%, 25% 50%, 37.5% 37.5%, 37.5% 62.5%, 62.5% 62.5%, 62.5% 37.5%, 50% 37.5%, 62.5% 50%, 50% 62.5%, 37.5% 50%, 43.75% 43.75%, 50% 43.75%, 56.25% 50%, 50% 56.25%, 43.75% 50%, 46.88% 46.88%, 53.13% 46.88%, 53.13% 53.13%, 46.88% 53.13%, 46.88% 46.88%, 50% 43.75%, 56.25% 43.75%, 56.25% 56.25%, 43.75% 56.25%, 43.75% 43.75%, 50% 37.5%, 37.5% 37.5%, 50% 25%, 75% 25%, 75% 75%, 25% 75%, 0% 50%, 50% 0%, 100% 50%, 50% 100%, 25% 75%);
-}
-
 main section .logo img {
     height: 100%;
     width: 100%;
@@ -71,7 +63,7 @@ main section .logo img {
 main section h2 {
     font-size: 30px;
     font-weight: bold;
-    color: var(--main-color);
+    color: var(--main-color); 
 }
 
 main section .container-form {
@@ -107,30 +99,10 @@ main section .container-form form p input {
     background: #eee;
 }
 
-main section .container-form form p input {
-    height: 35px;
-    width: 100%;
-    border: none;
-    outline: none;
-    border-radius: 15px;
-    padding-left: 10px;
-    background: #eee;
-}
-
 main section .container-form form p input[type="submit"] {
     font-size: 20px;
     font-weight: bold;
     color: #fff;
     height: 45px;
     background: var(--bg-color);
-}
-
-main section .container-form form p span {
-    display: block;
-    text-align: end;
-}
-
-main section .container-form form p span a {
-    text-decoration: none;
-    color: var(--color-links);
 }
