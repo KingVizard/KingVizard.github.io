@@ -15,20 +15,12 @@ const db = firebase.database();
 
 let MainForma = document.getElementById('MainForm');
 
-// let user = document.getElementById('emailInp').value;
-// observador
-
-
 auth.onAuthStateChanged((user) => {
   if (user) {
-    console.log('usuario logeado: ' + user.email);
     location.replace("menu.html");
   } else {
-    location.replace("index.html");
   }
 });
-
-
 
 let SignIn = evt => {
   evt.preventDefault();
@@ -55,7 +47,6 @@ let SignIn = evt => {
         Swal.fire('Ocurrió un error durante el inicio de sesión', '', 'error');
       }
     });
-
 }
 
 MainForma.addEventListener('submit', SignIn);
