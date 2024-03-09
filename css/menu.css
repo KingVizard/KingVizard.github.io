@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
+    outline: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    /* padding: 1rem; */
+    background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+    overflow: hidden;
+
+    /* main {
+        height: 90vh;
+        width: 90vw;
+
+        .container {
+            height: calc(70vh - 50px);
+            gap: 10px;
+
+            a {
+                width: 13rem;
+                height: 13rem;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px;
+                background: rgba(170, 28, 28, 0.47);
+                text-decoration: none;
+                color: #fff;
+                text-align: center;
+                position: relative;
+            }
+
+            a img {
+                height: calc(100% - 50px);
+                width: 100%;
+                object-fit: contain;
+
+            }
+
+        }
+    } */
+
+    /* background-color: red; */
+}
+
+
+main {
+    /* font-size: 18px; */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 75%;
+    width: 80%;
+    /* column-gap: 10px; */
+    border-radius: 20px;
+    /* background: #fff; */
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, .5); */
+}
+
+main section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+a {
+    width: 15rem;
+    height: 10rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: rgba(170, 28, 28, 0.47);
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+a img {
+    height: calc(100% - 50px);
+    width: 100%;
+    object-fit: contain;
+
+}
+
+button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 1;
+    display: inline-block;
+    background-color: red;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #fff;
+    /* width: 5px; */
+    /* height: 1px; */
+} 
