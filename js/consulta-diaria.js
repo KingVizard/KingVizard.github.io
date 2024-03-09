@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   const config = {
     apiKey: "AIzaSyAXoDvbYkbX1Y-VuZmEjBTXv1BywK40Lmo",
     authDomain: "testappwebestadias.firebaseapp.com",
@@ -41,30 +41,104 @@ $(document).ready(function() {
   let diaSemana = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
   let mesAnyo = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
   let fechaCompleta = `${diaSemana[fechaHora.getDay()]}, ${fechaHora.getDate()} ${mesAnyo[fechaHora.getMonth()]} ${fechaHora.getFullYear()}`;
-var ref = firebase.database().ref("produccion");
-ref
-  .orderByChild("fecha")
-  .equalTo(fechaCompleta)
-  .on("child_added", function(snapshot) {
-    // snapshot.child("usuario").val()
-    dataset = [snapshot.key, snapshot.child("secador").val(), snapshot.child("turnos").val(), snapshot.child("hora").val(), snapshot.child("fecha").val(), snapshot.child("formato").val(), snapshot.child("color").val(),  snapshot.child("contadorSQFT").val(),  snapshot.child("sqftMeta").val(),  snapshot.child("Cumplimiento").val(),  snapshot.child("comentarios").val()];
-    table.rows.add([dataset]).draw();
+  var ref = firebase.database().ref("produccion");
+
+  
+  
+  const auth = firebase.auth();
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      ref
+        .orderByChild("usuario")
+        .equalTo(user.email)
+        .on("child_added", function (snapshot) {
+          // snapshot.child("usuario").val()
+          let fecha_val = snapshot;
+
+          if(fecha_val.child("fecha").val() == fechaCompleta) {
+            // console.log(fecha_val);
+            dataset = [fecha_val.key, fecha_val.child("secador").val(), fecha_val.child("turnos").val(), fecha_val.child("hora").val(), fecha_val.child("fecha").val(), fecha_val.child("formato").val(), fecha_val.child("color").val(), fecha_val.child("contadorSQFT").val(), fecha_val.child("sqftMeta").val(), fecha_val.child("Cumplimiento").val(), fecha_val.child("comentarios").val()];
+            table.rows.add([dataset]).draw();
+          }
+          // console.log(fecha_val);
+          // if (fecha_val.fecha.val() == fechaCompleta) {
+          //     console.log(fecha_val);
+            
+            // valores importantes
+            // dataset = [snapshot.key, snapshot.child("secador").val(), snapshot.child("turnos").val(), snapshot.child("hora").val(), snapshot.child("fecha").val(), snapshot.child("formato").val(), snapshot.child("color").val(), snapshot.child("contadorSQFT").val(), snapshot.child("sqftMeta").val(), snapshot.child("Cumplimiento").val(), snapshot.child("comentarios").val()];
+            // table.rows.add([dataset]).draw();
+          // }
+        });
+      // console.log('usuario logeado: ' + user.email);
+      // location.replace("menu.html");
+
+
+    } else {
+      location.replace("index.html");
+    }
   });
+
+
+  // const query = ref.orderByChild("fecha")
+  // .startAt(fechaCompleta)
+  // .endAt(fechaCompleta)
+  //   .on("child_added", function (snapshot) {
+  //     // snapshot.child("usuario").val()
+  //     dataset = [snapshot.key, snapshot.child("secador").val(), snapshot.child("turnos").val(), snapshot.child("hora").val(), snapshot.child("fecha").val(), snapshot.child("formato").val(), snapshot.child("color").val(), snapshot.child("contadorSQFT").val(), snapshot.child("sqftMeta").val(), snapshot.child("Cumplimiento").val(), snapshot.child("comentarios").val()];
+  //     table.rows.add([dataset]).draw();
+  //   });
+  // // .orderByChild("usuario")
+  // .startAt(user.email)
+  // .endAt(user.email);
+
+
+  // get(query)
+  //   .then((snapshot) => {
+  //     snapshot.forEach((childSnapshot) => {
+  //       const childKey = childSnapshot.key;
+  //       const childData = childSnapshot.val();
+  //       //     dataset = [snapshot.key, snapshot.child("secador").val(), snapshot.child("turnos").val(), snapshot.child("hora").val(), snapshot.child("fecha").val(), snapshot.child("formato").val(), snapshot.child("color").val(), snapshot.child("contadorSQFT").val(), snapshot.child("sqftMeta").val(), snapshot.child("Cumplimiento").val(), snapshot.child("comentarios").val()];
+  //       //     table.rows.add([dataset]).draw();
+
+  //       console.log(childKey, childData);
+  //     });
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error al obtener datos: ", error);
+  //   });
+
+  // const auth = firebase.auth();
+  // auth.onAuthStateChanged((user) => {
+  //   if (user) {
+  //     // console.log('usuario logeado: ' + user.email);
+  //     // location.replace("menu.html");
+
+
+  //   } else {
+  //     location.replace("index.html");
+  //   }
+  // });
+
+
+
+
+
+
 
   //CHILD_CHANGED
   coleccionProduccion.on('child_changed', datos => {
     // datos.child('usuario'),
-    dataset = [datos.key, datos.child("secador").val(), datos.child("turnos").val(), datos.child("hora").val(), datos.child("fecha").val(), datos.child("formato").val(), datos.child("color").val(),  datos.child("contadorSQFT").val(),  datos.child("sqftMeta").val(),  datos.child("Cumplimiento").val(),  datos.child("comentarios").val()];
+    dataset = [datos.key, datos.child("secador").val(), datos.child("turnos").val(), datos.child("hora").val(), datos.child("fecha").val(), datos.child("formato").val(), datos.child("color").val(), datos.child("contadorSQFT").val(), datos.child("sqftMeta").val(), datos.child("Cumplimiento").val(), datos.child("comentarios").val()];
     table.row(filaEditada).data(dataset).draw();
   });
 
   //CHILD_removed
-  coleccionProduccion.on('child_removed', function() {
+  coleccionProduccion.on('child_removed', function () {
     table.row(filaEliminada.parents('tr')).remove().draw();
   });
 
   // Form Alta / Edicion
-  $('form').submit(function(e) {
+  $('form').submit(function (e) {
     e.preventDefault();
     let id = $.trim($('#id').val());
     let secador = $.trim($('#listSecadores').val());
@@ -83,7 +157,7 @@ ref
       idFirebase = coleccionProduccion.push().key;
     };
 
-    data = { secador: secador, turnos: turnos, hora : hora, fecha : fecha, color : color, formato : formato, contadorSQFT : contadorSQFT, sqftMeta : sqftMeta, Cumplimiento : Cumplimiento, comentarios : comentarios };
+    data = { secador: secador, turnos: turnos, hora: hora, fecha: fecha, color: color, formato: formato, contadorSQFT: contadorSQFT, sqftMeta: sqftMeta, Cumplimiento: Cumplimiento, comentarios: comentarios };
 
     actualizacionData = {};
     actualizacionData[`/${idFirebase}`] = data;
@@ -93,7 +167,7 @@ ref
     $('#modalAltaEdicion').modal('hide');
   });
 
-  $('#tablaProductos').on('click', '.btnEditar', function() {
+  $('#tablaProductos').on('click', '.btnEditar', function () {
     filaEditada = table.row($(this).parents('tr'));
     let fila = $('#tablaProductos').dataTable().fnGetData($(this).closest('tr'));
     let id = fila[0];
@@ -120,7 +194,7 @@ ref
     $('#modalAltaEdicion').modal('show');
   });
 
-  $('#tablaProductos').on('click', '.btnBorrar', function() {
+  $('#tablaProductos').on('click', '.btnBorrar', function () {
     filaEliminada = $(this);
     Swal.fire({
       title: '¿Está seguro de eliminar el producto?',
