@@ -9,12 +9,26 @@ const firebaseConfig = {
   measurementId: "G-FM5VLLCV3F"
 };
 
-// -- INICIALIZANDO LA BD
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.database();
 
 let MainForma = document.getElementById('MainForm');
+
+// let user = document.getElementById('emailInp').value;
+// observador
+
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    console.log('usuario logeado: ' + user.email);
+    location.replace("menu.html");
+  } else {
+    location.replace("index.html");
+  }
+});
+
+
 
 let SignIn = evt => {
   evt.preventDefault();
@@ -26,38 +40,22 @@ let SignIn = evt => {
     .then(function () {
       location.replace("menu.html");
     })
-      .catch((error) => {
-      // const errorCode = error.code;
+    .catch((error) => {
+      const errorCode = error.code;
       const errorMessage = error.message;
-      Swal.fire('!Ocurrio un error!', errorMessage, 'error');       
-      
-      
-  //     firebase.auth().signInWithEmailAndPassword(email, password)
-  // .then((userCredential) => {
-  //   // Inicio de sesión exitoso
-  //   const user = userCredential.user;
-  //   // ...
-  // })
-  // .catch((error) => {
-  //   // Error durante el inicio de sesión
-  //   const errorCode = error.code;
-  //   const errorMessage = error.message;
-  //   // Personaliza los mensajes de error según el código de error
-  //   if (errorCode === 'auth/invalid-email') {
-  //     // Mensaje de error para correo electrónico inválido
-  //     console.log('El correo electrónico ingresado no es válido');
-  //   } else if (errorCode === 'auth/wrong-password') {
-  //     // Mensaje de error para contraseña incorrecta
-  //     console.log('La contraseña ingresada es incorrecta');
-  //   } else {
-  //     // Mensaje de error genérico
-  //     console.log('Ocurrió un error durante el inicio de sesión');
-  //   }
-  // });
 
-
-
+      if (errorCode === 'auth/invalid-email') {
+        Swal.fire('El correo electrónico ingresado no es válido', '', 'error');
+      } else if (errorCode === 'auth/wrong-password') {
+        Swal.fire('La contraseña ingresada es incorrecta', '', 'error');
+      } else if (errorCode === 'auth/user-not-found') {
+        Swal.fire('Usuario no encontrado', '', 'error');
+      }
+      else {
+        Swal.fire('Ocurrió un error durante el inicio de sesión', '', 'error');
+      }
     });
+
 }
 
 MainForma.addEventListener('submit', SignIn);

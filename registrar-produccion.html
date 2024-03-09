@@ -13,7 +13,7 @@
 </head>
 <body>
   <section class="d-flex align-items-center row-head p-3 container-arrow">
-    <a href="index.html" class="col-2"><i class="bi bi-arrow-left-circle"></i></a>
+    <a href="menu.html" class="col-2"><i class="bi bi-arrow-left-circle"></i></a>
   </section>
   <main>
     <section class="container">
@@ -24,6 +24,7 @@
       </div>
       <form class="row">
         <input id="id" type="hidden">
+        <!-- <input id="usuario" type="hidden"> -->
         <!-- fila 1 -->
         <div class="row row-1">
           <div class="col-6 text-start d-flex justify-content-center gap-2">
@@ -56,16 +57,20 @@
             <span>Color:</span>
             <input type="text" id="color" class="inputEntry" required>
           </div>
+
           <div class="col-6 text-start">
             <span>Contador SQFT:</span>
-            <input type="number" id="contadorSQFT" class="inputEntry" min="0" required>
+            <input type="number" id="sqftMeta" class="inputEntry" min="0" required>
           </div>
+          
         </div>
         <div class="row row-2">
           <div class="col-6 text-start">
             <span>SQFT Requeridos:</span>
-            <input type="number" id="sqftMeta" class="inputEntry" min="0" required>
+            <input type="number" id="contadorSQFT" class="inputEntry" min="0" required>
           </div>
+
+
           <div class="col-6 text-start">
             <span>Formato: </span>
             <Select name="listSecadores" id="formato" class="inputEntry">
@@ -94,10 +99,10 @@
         </div>
         <div class="row row-4">
           <div class="col-6 d-flex justify-content-center align-items-center">
-            <button type="submit">Guardar</button>
+            <a href="consulta-diaria.html" id="testOperacion">Mostrar</a>
           </div>
           <div class="col-6 d-flex justify-content-center align-items-center">
-            <a href="consulta-diaria.html" id="testOperacion">Mostrar</a>
+            <button type="submit">Guardar</button>
           </div>
         </div>
       </form>

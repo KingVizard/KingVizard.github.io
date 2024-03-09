@@ -46,13 +46,14 @@ ref
   .orderByChild("fecha")
   .equalTo(fechaCompleta)
   .on("child_added", function(snapshot) {
-
+    // snapshot.child("usuario").val()
     dataset = [snapshot.key, snapshot.child("secador").val(), snapshot.child("turnos").val(), snapshot.child("hora").val(), snapshot.child("fecha").val(), snapshot.child("formato").val(), snapshot.child("color").val(),  snapshot.child("contadorSQFT").val(),  snapshot.child("sqftMeta").val(),  snapshot.child("Cumplimiento").val(),  snapshot.child("comentarios").val()];
     table.rows.add([dataset]).draw();
   });
 
   //CHILD_CHANGED
   coleccionProduccion.on('child_changed', datos => {
+    // datos.child('usuario'),
     dataset = [datos.key, datos.child("secador").val(), datos.child("turnos").val(), datos.child("hora").val(), datos.child("fecha").val(), datos.child("formato").val(), datos.child("color").val(),  datos.child("contadorSQFT").val(),  datos.child("sqftMeta").val(),  datos.child("Cumplimiento").val(),  datos.child("comentarios").val()];
     table.row(filaEditada).data(dataset).draw();
   });
@@ -67,6 +68,7 @@ ref
     e.preventDefault();
     let id = $.trim($('#id').val());
     let secador = $.trim($('#listSecadores').val());
+    // let secador = $.trim($('#listSecadores').val());
     let turnos = $.trim($('#listTurnos').val());
     let hora = $.trim($('#hora').val());
     let fecha = $.trim($('#fecha').val());
