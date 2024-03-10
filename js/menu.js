@@ -16,10 +16,9 @@ const firebaseConfig = {
   
   auth.onAuthStateChanged((user) => {
     if (user) {
-      // console.log('usuario logeado pantalla menu: ' + user.email);
-    //   location.replace("menu.html");
+
     } else {
-      location.replace("index.html");
+      window.location.replace("index.html");
     }
   });
 
@@ -31,6 +30,5 @@ const firebaseConfig = {
     })
     .catch(function(error){
       alert(error);
-
     })
 };

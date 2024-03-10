@@ -31,11 +31,17 @@ auth.onAuthStateChanged((user) => {
               Swal.fire('!Advertencia!', 'Correo y/o Contraseña incorrecto', 'warning');
               return
           }
-          validar_campo(name);
+        //   validar_nombre(name);
           
-          if (validar_campo(name) == false || validar_campo(secador) == false || validar_campo(turno) == false) {
-              Swal.fire('!Advertencia!', 'Uno o varios campos estan vacios', 'warning');
+          if (validar_nombre(name) == false) {
+              Swal.fire('!Advertencia!', 'El campo nombre esta vacio', 'warning');
               return
+            }
+            if( validar_campo(secador) == false || validar_campo(turno) == false) {
+                Swal.fire('!Advertencia!', 'No pueden quedar vacios los campos', 'warning');
+                // document.getElementById('secadorInp').focus();
+                return
+                
           }
       
           auth.createUserWithEmailAndPassword(email, password)
@@ -92,12 +98,25 @@ function validar_pass(password) {
     }
 }
 
-function validar_campo(field) {
+function validar_nombre(field) {
     if (field == null) {
         return false;
     }
     // alert('campos: ' + field);
     if (field.length <= 10) {
+        return false;
+    }
+     else {
+        return true;
+    }
+}
+
+function validar_campo(field) {
+    if (field == null) {
+        return false;
+    }
+    // alert('campos: ' + field);
+    if (field.length < 1) {
         return false;
     }
      else {

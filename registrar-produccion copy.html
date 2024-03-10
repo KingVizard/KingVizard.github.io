@@ -1,107 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="css/registrar-produccion.css">
+  <link rel="stylesheet" href="css/registrar-produccion copy.css">
   <title>Produccion</title>
 </head>
-
-<body style="height: 100vh !important;">
-  <header class="d-flex align-items-center p-3">
+<body>
+  <section class="d-flex align-items-center row-head p-3 container-arrow">
     <a href="menu.html" class="col-2"><i class="bi bi-arrow-left-circle"></i></a>
-  </header>
-  <main class="px-3 col-lg-5 col-md-8 col-sm-12 col-xs-12">
-    <form  class="container mt-5">
-      <input id="id" type="hidden">
-      <div class="row fs-row">
-        <div class="col-6">
-          <span>Secador#: </span>
-          <Select name="listSecadores" id="listSecadores">
-            <option value="1" selected>1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </Select>
-        </div>
-        <div class="col-6">
-          <span>Turno: </span>
-          <Select name="listTurnos" id="listTurnos">
-            <option value="A" selected>A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-          </Select>
-        </div>
-      </div>
-
-      <div class="row time">
-        <div class="col-12">
-          <span>Hora de Inicio: </span>
-          <input type="time" name="" id="hora">
-        </div>
-      </div>
-      
-      <div class="row row-col">
-        <div class="col-6">
-          <span>Color:</span>
-          <input type="text" id="color" required>
-        </div>
-        <div class="col-6">
-          <span>Contador SQFT:</span>
-          <input type="number" id="contadorSQFT" min="0" required>
-        </div>
-      </div>
-
-      <div class="row row-col">
-        <div class="col-6">
-          <span>SQFT Requeridos:</span>
-          <input type="number" id="sqftMeta" min="0" required>
-        </div>
-        <div class="col-6">
-          <span>Formato: </span>
-          <Select name="listSecadores" id="formato">
-            <option value="1X1" selected>1X1</option>
-            <option value="PNY">PNY</option>
-            <option value="1X2">1X2</option>
-            <option value="1X3">1X3</option>
-            <option value="HEX">HEX</option>
-            <option value="2X2">2X2</option>
-            <option value="2X4">2X4</option>
-            <option value="3X3">3X3</option>
-            <option value="ARAB">ARAB</option>
-            <option value="25PICK">25PICK</option>
-            <option value="ROM">ROM</option>
-            <option value="KAL">KAL</option>
-            <option value="FAN">FAN</option>
-            <option value="OCT">OCT</option>
-          </Select>
-        </div>
-      </div>
-
-      <div class="row row-col coment">
-        <div class="col-12">
-          <span>Comentarios</span>
-          <textarea id="comentarios" placeholder="Ingrese un comentario......"></textarea>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-6">
-          <a href="consulta-diaria.html">Mostrar</a>
-        </div>
-        <div class="col-6">
-          <button type="submit">Guardar</button>
-        </div>
-      </div>
-
-    </form>
-  </main>
-  <!-- <main class="container">
-    <section >
+  </section>
+  <main class="">
+    <section class="container">
       <div class="row text-light">
         <div class="col text-center title">
           <h1>Registrar Producción</h1>
@@ -109,6 +22,7 @@
       </div>
       <form class="row">
         <input id="id" type="hidden">
+        <!-- fila 1 -->
         <div class="row row-1">
           <div class="col-6 text-start d-flex justify-content-center gap-2">
             <span>Secador#:</span>
@@ -128,6 +42,7 @@
             </Select>
           </div>
         </div>
+        <!-- fila 2 -->
         <div class="row row-1"">
             <div class=" col text-start d-flex justify-content-center gap-2 ">
               <span>Hora de Inicio: </span>
@@ -139,10 +54,12 @@
             <span>Color:</span>
             <input type="text" id="color" class="inputEntry" required>
           </div>
+
           <div class="col-6 text-start">
             <span>Contador SQFT:</span>
             <input type="number" id="contadorSQFT" class="inputEntry" min="0" required>
           </div>
+          
         </div>
         <div class="row row-2">
           <div class="col-6 text-start">
@@ -185,7 +102,7 @@
         </div>
       </form>
     </section>
-  </main> -->
+  </main>
   <!-- FIREBASE -->
   <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase.js"></script>
   <!-- SWEETALER -->
@@ -200,5 +117,4 @@
     crossorigin="anonymous"></script>
   <script src="js/registrar-produccion.js"></script>
 </body>
-
 </html>
