@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta Diaria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #tablaProduccion {
+            height: 50% !important;
+        }
+    </style>
+</head>
+
+<body style="height: 100vh !important;">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+
+                <!-- Modal -->
+                <div id="modalAltaEdicion" role="dialog" class="modal fade" tabindex="-1"
+                    aria-labelledby="modalAltaEdicionLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+
+                            <!-- HEADER -->
+                            <div class="modal-header bg-primary text-light">
+                                <h5 class="modal-title" id="modalAltaEdicionLabel">Alta / Edicion</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            <!-- BODY -->
+                            <form>
+                                <div class="modal-body">
+                                    <input id="id" type="hidden">
+                                    <div class="form-group">
+                                        <label>Secador#: </label>
+                                        <Select name="listSecadores" id="listSecadores" class="inputEntry form-control">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </Select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Turno: </label>
+                                        <Select name="listTurnos" id="listTurnos" class="inputEntry form-control">
+                                            <option value="A" selected>A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                        </Select>
+                                    </div>
+                                    <div class="form-group" hidden>
+                                        <label>Hora: </label>
+                                        <input type="text" name="" id="hora" class="form-control">
+                                    </div>
+                                    <div class="form-group" hidden>
+                                        <label>fecha: </label>
+                                        <input type="text" name="" id="fecha" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Color: </label>
+                                        <input type="text" id="color" class="inputEntry form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>ContadorSQFT: </label>
+                                        <input type="number" id="contadorSQFT" class="inputEntry form-control" min="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>SQFT Requeridos: </label>
+                                        <input type="number" id="sqftMeta" class="inputEntry form-control" min="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Formato: </label>
+                                        <Select name="" id="formato" class="inputEntry form-control">
+                                            <option value="1X1" selected>1X1</option>
+                                            <option value="PNY">PNY</option>
+                                            <option value="1X2">1X2</option>
+                                            <option value="1X3">1X3</option>
+                                            <option value="HEX">HEX</option>
+                                            <option value="2X2">2X2</option>
+                                            <option value="2X4">2X4</option>
+                                            <option value="3X3">3X3</option>
+                                            <option value="ARAB">ARAB</option>
+                                            <option value="25PICK">25PICK</option>
+                                            <option value="ROM">ROM</option>
+                                            <option value="KAL">KAL</option>
+                                            <option value="FAN">FAN</option>
+                                            <option value="OCT">OCT</option>
+                                        </Select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Comentarios: </label>
+                                        <textarea name="" id="comentarios" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <!-- FOOTER -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" id="btnGuardar" class="btn btn-primary"
+                                        translate="1">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <table id="tablaProduccion" class="table table-bordered table-striped" style="width: 100%">
+                    <thead class="text-center">
+                        <tr>
+                            <th scope="col">SECADOR</th>
+                            <th scope="col">TURNO</th>
+                            <th scope="col">HORA</th>
+                            <th scope="col">FECHA</th>
+                            <th scope="col">FORMATO</th>
+                            <th scope="col">COLOR</th>
+                            <th scope="col">CONTADORSQFT</th>
+                            <th scope="col">SQFTREQUERIDOS</th>
+                            <th scope="col">% CUMPLIMIENTO</th>
+                            <th scope="col">COMENTARIOS</th>
+                            <th scope="col">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyProduccion">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase.js"></script>
+
+
+    <script>
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAXoDvbYkbX1Y-VuZmEjBTXv1BywK40Lmo",
+            authDomain: "testappwebestadias.firebaseapp.com",
+            databaseURL: "https://testappwebestadias-default-rtdb.firebaseio.com",
+            projectId: "testappwebestadias",
+            storageBucket: "testappwebestadias.appspot.com",
+            messagingSenderId: "361048886546",
+            appId: "1:361048886546:web:fde40acd0deeaaf207b7cb",
+            measurementId: "G-FM5VLLCV3F"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        coleccionProduccion = db.ref().child('produccion'); //PRODUCCION
+
+        let bodyProduccion = $('#bodyProduccion').val();//PRODUCCION
+
+        $('form').submit(function (e) {
+            e.preventDefault();
+            let id = $.trim($('#id').val());
+            let secador = $.trim($('#listSecadores').val());
+            let turnos = $.trim($('#listTurnos').val());
+            let hora = $.trim($('#hora').val());
+            let fecha = $.trim($('#fecha').val());
+            let color = $.trim($('#color').val());
+            let formato = $.trim($('#formato').val());
+            let contadorSQFT = $.trim($('#contadorSQFT').val());
+            let sqftMeta = $.trim($('#sqftMeta').val());
+            let Cumplimiento = ((contadorSQFT / sqftMeta) * 100).toFixed(2) + '%';
+            let comentarios = $.trim($('#comentarios').val());
+            let idFirebase = id;
+            if (idFirebase == '') {
+                idFirebase = coleccionProduccion.push().key;
+            };
+
+            data = { secador: secador, turnos: turnos, hora: hora, fecha: fecha, color: color, formato: formato, contadorSQFT: contadorSQFT, sqftMeta: sqftMeta, Cumplimiento: Cumplimiento, comentarios: comentarios };
+
+            actualizacionData = {};
+            actualizacionData[`/${idFirebase}`] = data;
+            coleccionProduccion.update(actualizacionData);
+            id = '';
+            $('form').trigger('reset');
+            $('#modalAltaEdicion').modal('hide');
+        });
+
+        // iconos
+        const iconoEditar = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/></svg>';
+        const iconoEliminar = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/><path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/></svg>';
+
+        function mostrarProduccion({ secador, turnos, hora, fecha, formato, color, contadorSQFT, sqftMeta, Cumplimiento, comentarios }) {
+            return `
+            <td scope="col">${secador}</td>
+            <td scope="col">${turnos}</td>
+            <td scope="col">${hora}</td>
+            <td scope="col">${fecha}</td>
+            <td scope="col">${formato}</td>
+            <td scope="col">${color}</td>
+            <td scope="col">${contadorSQFT}</td>
+            <td scope="col">${sqftMeta}</td>
+            <td scope="col">${Cumplimiento}</td>
+            <td scope="col">${comentarios}</td>
+            <td><button class="btnEditar btn btn-secondary" data-toogle="tooltip" title="Editar">${iconoEditar}</button> <button class="btnBorrar btn btn-danger" data-toogle="tooltip" title="Borrar">${iconoEliminar}</button></td>
+            `
+        };
+
+        // Realizar una consulta con la cláusula WHERE
+        let fechaHora = new Date();
+        let diaSemana = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
+        let mesAnyo = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+        let fechaCompleta = `${diaSemana[fechaHora.getDay()]}, ${fechaHora.getDate()} ${mesAnyo[fechaHora.getMonth()]} ${fechaHora.getFullYear()}`;
+
+
+        var ref = firebase.database().ref("produccion");
+
+        const auth = firebase.auth();
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                //CHILD_ADDED
+                coleccionProduccion
+                    .orderByChild("usuario")
+                    .equalTo(user.email)
+                    .on('child_added', (data) => {
+                        // console.log(data)
+                        let fecha_val = data;
+
+                        if (fecha_val.child("fecha").val() == fechaCompleta) {
+
+                            let tr = document.createElement('tr')
+                            tr.id = data.key
+                            tr.innerHTML = mostrarProduccion(data.val())
+                            document.getElementById('bodyProduccion').appendChild(tr)
+                        }
+                    });
+            } else {
+                location.replace("index.html");
+            }
+        });
+
+        //CHILD_CHANGED
+        coleccionProduccion.on('child_changed', data => {
+            let nodoEditado = document.getElementById(data.key)
+            nodoEditado.innerHTML = mostrarProduccion(data.val())
+        });
+
+        //CHILD_REMOVED
+        coleccionProduccion.on('child_removed', data => {
+            let nodoEliminado = document.getElementById(data.key)
+            document.getElementById('bodyProduccion').removeChild(nodoEliminado)
+        });
+
+        $('#tablaProduccion').on('click', '.btnEditar', function () {
+            let id = $(this).closest('tr').attr('id');
+            let secador = $(this).closest('tr').find('td:eq(0)').text();
+            let turnos = $(this).closest('tr').find('td:eq(1)').text();
+            let hora = $(this).closest('tr').find('td:eq(2)').text();
+            let fecha = $(this).closest('tr').find('td:eq(3)').text();
+            let color = $(this).closest('tr').find('td:eq(5)').text();
+            let contadorSQFT = $(this).closest('tr').find('td:eq(6)').text();
+            let sqftMeta = $(this).closest('tr').find('td:eq(7)').text();
+            let formato = $(this).closest('tr').find('td:eq(4)').text();
+            let comentarios = $(this).closest('tr').find('td:eq(9)').text();
+
+            $('#id').val(id);
+            $('#listSecadores').val(secador);
+            $('#listTurnos').val(turnos);
+            $('#hora').val(hora);
+            $('#fecha').val(fecha);
+            $('#color').val(color);
+            $('#contadorSQFT').val(contadorSQFT);
+            $('#sqftMeta').val(sqftMeta);
+            $('#formato').val(formato);
+            $('#comentarios').val(comentarios);
+            $('#modalAltaEdicion').modal('show');
+        });
+
+        $('#tablaProduccion').on('click', '.btnBorrar', function () {
+            Swal.fire({
+                title: '¿Está seguro de eliminar el producto?',
+                text: '¡Está operacion no se puede revertir!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonColor: 'Borrar'
+            }).then((result) => {
+                if (result.value) {
+                    let id = $(this).closest('tr').attr('id');
+                    db.ref(`produccion/${id}`).remove()
+                    Swal.fire('¡Eliminado!', 'El producto ha sido eliminado.', 'success')
+                }
+            })
+        });
+
+    </script>
+
+</body>
+
+</html>
