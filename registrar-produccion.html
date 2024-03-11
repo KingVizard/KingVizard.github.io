@@ -16,7 +16,8 @@
     <a href="menu.html" class="col-2"><i class="bi bi-arrow-left-circle"></i></a>
   </header>
   <main class="px-3 col-lg-5 col-md-8 col-sm-12 col-xs-12">
-    <form  class="container mt-5">
+    <form class="container mt-5">
+      <h2 class="text-center">Registrar Producción</h2>
       <input id="id" type="hidden">
       <div class="row fs-row">
         <div class="col-6">
@@ -37,14 +38,12 @@
           </Select>
         </div>
       </div>
-
       <div class="row time">
         <div class="col-12">
           <span>Hora de Inicio: </span>
           <input type="time" name="" id="hora">
         </div>
       </div>
-      
       <div class="row row-col">
         <div class="col-6">
           <span>Color:</span>
@@ -55,7 +54,6 @@
           <input type="number" id="contadorSQFT" min="0" required>
         </div>
       </div>
-
       <div class="row row-col">
         <div class="col-6">
           <span>SQFT Requeridos:</span>
@@ -81,111 +79,22 @@
           </Select>
         </div>
       </div>
-
       <div class="row row-col coment">
         <div class="col-12">
           <span>Comentarios</span>
           <textarea id="comentarios" placeholder="Ingrese un comentario......"></textarea>
         </div>
       </div>
-
       <div class="row">
         <div class="col-6">
-          <a href="consulta-diaria.html">Mostrar</a>
+          <a href="consulta-diaria.html" class="bg-primary">Mostrar</a>
         </div>
         <div class="col-6">
-          <button type="submit">Guardar</button>
+          <button type="submit" class="bg-dark">Guardar</button>
         </div>
       </div>
-
     </form>
   </main>
-  <!-- <main class="container">
-    <section >
-      <div class="row text-light">
-        <div class="col text-center title">
-          <h1>Registrar Producción</h1>
-        </div>
-      </div>
-      <form class="row">
-        <input id="id" type="hidden">
-        <div class="row row-1">
-          <div class="col-6 text-start d-flex justify-content-center gap-2">
-            <span>Secador#:</span>
-            <Select name="listSecadores" id="listSecadores" class="inputEntry">
-              <option value="1" selected>1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </Select>
-          </div>
-          <div class="col-6 text-start d-flex justify-content-center gap-2">
-            <span>Turno:</span>
-            <Select name="listTurnos" id="listTurnos" class="inputEntry">
-              <option value="A" selected>A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-            </Select>
-          </div>
-        </div>
-        <div class="row row-1"">
-            <div class=" col text-start d-flex justify-content-center gap-2 ">
-              <span>Hora de Inicio: </span>
-              <input type="time" name="" id="hora">
-        </div>
-        </div>
-        <div class="row row-2">
-          <div class="col-6 text-start">
-            <span>Color:</span>
-            <input type="text" id="color" class="inputEntry" required>
-          </div>
-          <div class="col-6 text-start">
-            <span>Contador SQFT:</span>
-            <input type="number" id="contadorSQFT" class="inputEntry" min="0" required>
-          </div>
-        </div>
-        <div class="row row-2">
-          <div class="col-6 text-start">
-            <span>SQFT Requeridos:</span>
-            <input type="number" id="sqftMeta" class="inputEntry" min="0" required>
-          </div>
-          <div class="col-6 text-start">
-            <span>Formato: </span>
-            <Select name="listSecadores" id="formato" class="inputEntry">
-              <option value="1X1" selected>1X1</option>
-              <option value="PNY">PNY</option>
-              <option value="1X2">1X2</option>
-              <option value="1X3">1X3</option>
-              <option value="HEX">HEX</option>
-              <option value="2X2">2X2</option>
-              <option value="2X4">2X4</option>
-              <option value="3X3">3X3</option>
-              <option value="ARAB">ARAB</option>
-              <option value="25PICK">25PICK</option>
-              <option value="ROM">ROM</option>
-              <option value="KAL">KAL</option>
-              <option value="FAN">FAN</option>
-              <option value="OCT">OCT</option>
-            </Select>
-          </div>
-        </div>
-        <div class="row row-3">
-          <div class="col d-flex flex-column">
-            <span>Comentarios</span>
-            <textarea name="" id="comentarios" placeholder="Ingrese un comentario......"></textarea>
-          </div>
-        </div>
-        <div class="row row-4">
-          <div class="col-6 d-flex justify-content-center align-items-center">
-            <a href="consulta-diaria.html" id="testOperacion">Mostrar</a>
-          </div>
-          <div class="col-6 d-flex justify-content-center align-items-center">
-            <button type="submit">Guardar</button>
-          </div>
-        </div>
-      </form>
-    </section>
-  </main> -->
   <!-- FIREBASE -->
   <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase.js"></script>
   <!-- SWEETALER -->

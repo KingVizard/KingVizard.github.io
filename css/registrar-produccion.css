@@ -42,6 +42,12 @@ main form {
   row-gap: 1rem;
 }
 
+main form h2 {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #000;
+  line-height: 1;
+}
+
 main form .row {
   height: 4.2rem;
   row-gap: 5rem;
@@ -63,7 +69,6 @@ main form .row div {
   }
 
   button {
-    background: red;
     padding: 5px;
     height: 2.2rem;
     width: 8rem;
@@ -79,7 +84,6 @@ main form .row div {
     line-height: 1;
     color: #fff;
     text-decoration: none;
-    background: green;
     padding: 5px;
     height: 2.2rem;
     width: 8rem;
@@ -121,85 +125,7 @@ main form .row div select {
 
 }
 
-main form .fs-row, main form .time {
-  /* display: none; */
+main form .fs-row,
+main form .time {
   height: 3rem;
 }
-
-
-/* main {
-  flex-grow: 1;
-  width: 100%;
-}
-
-main form {
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-main form .row {
-  height: 5rem;
-  font-weight: bold;
-}
-
-main form .row div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-main form .row .col-6 {
-  display: flex;
-  flex-direction: column;
-  
-  input {
-    width: 100%;
-  }
-}
-
-main form .row-selectores .col-6 {
-  flex-direction: row;
-}
-
-main form .row-comentarios {
-  height: 8rem;
-  padding-bottom: .7rem;
-}
-
-main form .row-comentarios div {
-  flex-direction: column;
-
-  textarea {
-    resize: none;
-    width: 100%;
-    flex-grow: 1;
-  }
-}
-
-.row-botones {
-  button {
-    background: red;
-    padding: 5px;
-    height: 3rem;
-    width: 8rem;
-    border-radius: 10px;
-    color: #fff;
-    border: none;
-    font-weight: bold;
-  }
-  a {
-    text-align: center;
-    line-height: 1;
-    color: #fff;
-    text-decoration: none;
-    background: green;
-    padding: 5px;
-    height: 3rem;
-    width: 8rem;
-    border-radius: 10px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-} */
